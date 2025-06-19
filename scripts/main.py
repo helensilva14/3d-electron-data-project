@@ -1,7 +1,8 @@
-from download.epfl_dataset import download_epfl
+from download.epfl_dataset import extract_metadata
 
 def main():
-    download_epfl()
+    extract_metadata()
+
 
 if __name__ == "__main__":
     main()
