@@ -1,7 +1,7 @@
-from download.epfl_dataset import download
+from download.epfl_dataset import download_epfl
 
 def main():
-    download()
+    download_epfl()
 
 if __name__ == "__main__":
     main()
