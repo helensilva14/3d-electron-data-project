@@ -1,7 +1,12 @@
 import requests
+import os
+
+from timeit import default_timer as timer
 
 from PIL import Image
 from PIL.ExifTags import TAGS
+
+CHUNK_SIZE = 8192  # Default chunk size for downloading files
 
 def download_file(url, save_path):
     """
@@ -12,12 +17,26 @@ def download_file(url, save_path):
         save_path (str): The local path to save the downloaded file.
     """
     try:
-        with requests.get(url, stream=True) as response:
-            response.raise_for_status()  # Raise an error for HTTP errors
-            with open(save_path, "wb") as file:
-                for chunk in response.iter_content(chunk_size=8192): # TODO: Adjust chunk size to faster download
-                    file.write(chunk)
-        print(f"Downloaded {url} to {save_path}")
+        if not os.path.exists(save_path):
+            print(f"File {save_path} does not exist. Downloading...")
+            print(f"Starting download from {url} to {save_path}...")
+            start_time = timer()
+
+            # Ensure the directory exists
+            os.makedirs(os.path.dirname(save_path), exist_ok=True)
+            # Download the file
+            with requests.get(url, stream=True) as response:
+                response.raise_for_status()  # Raise HTTP errors
+                with open(save_path, "wb") as file:
+                    for chunk in response.iter_content(chunk_size=CHUNK_SIZE):
+                        if chunk:  # Filter out keep-alive new chunks
+                            file.write(chunk)
+            
+            end_time = timer()
+            print(f"Download completed in {(end_time - start_time):.2f} seconds.")
+        else:
+            print(f"File {save_path} already exists. Skipping download.")
+            return
     except Exception as e:
         print(f"Error downloading {url}: {e}")
 

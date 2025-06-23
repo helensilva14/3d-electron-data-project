@@ -1,6 +1,7 @@
-from download.epfl_dataset import extract_metadata
+from download.epfl_dataset import download_epfl, extract_metadata
 
 def main():
+    download_epfl()
     extract_metadata()
 
 
