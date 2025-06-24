@@ -1,16 +1,15 @@
 import requests
 import os
+import json
 
 from timeit import default_timer as timer
 
-from PIL import Image
-from PIL.ExifTags import TAGS
+from tifffile import TiffFile
 
 CHUNK_SIZE = 8192  # Default chunk size for downloading files
 
-def download_file(url, save_path):
-    """
-    Downloads a file from a URL and saves it to a specified path.
+def download_file(url: str, save_path: str) -> None:
+    """Downloads a file from a URL and saves it to a specified path.
 
     Args:
         url (str): The URL of the file.
@@ -40,38 +39,36 @@ def download_file(url, save_path):
     except Exception as e:
         print(f"Error downloading {url}: {e}")
 
-def get_tif_metadata(image_path):
-    """
-    Retrieves metadata from a TIFF image.
+def get_tif_metadata(image_path: str, metadata_path: str) -> None:
+    """Extracts metadata from a TIFF file and saves it to a JSON file.
 
     Args:
-        image_path (str): The path to the TIFF image file.
-
-    Returns:
-        dict: A dictionary containing the image metadata.
+        image_path (str): The path to the TIFF file.
+        metadata_path (str): The path to save the extracted metadata JSON file.
     """
     try:
-        image = Image.open(image_path)
-        metadata = {
-            # Extract basic metadata
-            "basic_info": {
-                "Image Size": image.size,
-                "Image Height": image.height,
-                "Image Width": image.width,
-                "Image Format": image.format,
-                "Image Mode": image.mode,
-                "Image is Animated": getattr(image, "is_animated", False),
-                "Frames in Image": getattr(image, "n_frames", 1),
-            }
-        }
-        # Extract EXIF data
-        exifdata = image.getexif()
-        for tag_id in exifdata:
-            tag = TAGS.get(tag_id, tag_id)
-            metadata[tag] = exifdata.get(tag_id)
-        return metadata
-    
-    except FileNotFoundError:
-        return {"error": "File not found."}
+        if not os.path.exists(image_path):
+            raise FileNotFoundError(f"File {image_path} not found. Pull it from DVC store by running 'dvc pull'.")
+        
+        print(f"Extracting metadata from {image_path}...")
+        metadata = {}
+        start_time = timer()
+
+        with TiffFile(image_path) as tif:
+            for page in tif.pages:
+                for tag in page.tags:
+                    metadata[tag.name] = tag.value
+
+        end_time = timer()
+        print(f"Metadata extraction completed in {(end_time - start_time):.2f} seconds.")
+        
+        if "error" not in metadata:
+            # Ensure the output directory exists
+            os.makedirs(os.path.dirname(metadata_path), exist_ok=True)
+            # Save metadata to a JSON file
+            json.dump(metadata, open(metadata_path, "w"), indent=4)
+            print(f"Metadata extracted and saved to {metadata_path}")
+        else:
+            print("Error after extracting metadata:", metadata["error"])
     except Exception as e:
-        return {"error": f"An error occurred: {e}"}
+        print(f"Error during metadata extraction from {image_path}: {e}")

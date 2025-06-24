@@ -1,9 +1,6 @@
-from download.epfl_dataset import download_epfl, extract_metadata
-
 def main():
-    download_epfl()
-    extract_metadata()
-
+    # TODO: Implement the main logic for the project
+    pass
 
 if __name__ == "__main__":
     main()
