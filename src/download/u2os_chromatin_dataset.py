@@ -8,9 +8,9 @@ ALL_METADATA_FILE = "outputs/u2os_chromatin_all_metadata.json"
 
 def download_dataset():
     """Downloads the U2OS Chromatin dataset images and saves them as a TIFF file."""
-    for url in IMAGES_URL:
-        download_file(url, SAVE_PATH)
-    # TODO: Consolidate the downloaded files into a single TIFF file
+    for i, url in enumerate(IMAGES_URL):
+        download_file(url, f"data/raw/u2os_{i}.tif")
+    # TODO: Consolidate downloaded files into a single TIFF file
 
 def extract_metadata():
     """Extracts metadata from the downloaded TIFF file and saves it to a JSON file."""
@@ -20,4 +20,4 @@ def extract_metadata():
 def run_tasks():
     """Runs the download and metadata extraction tasks."""
     download_dataset()
-    extract_metadata()
+    # extract_metadata()
