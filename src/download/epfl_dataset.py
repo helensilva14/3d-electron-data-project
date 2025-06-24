@@ -6,7 +6,7 @@ SAVE_PATH = "data/raw/epfl_volumedata.tif"
 METADATA_FILE = "outputs/epfl_metadata.json"
 ALL_METADATA_FILE = "outputs/epfl_all_metadata.json"
 
-def download_epfl():
+def download_dataset():
     """Downloads the EPFL Electron Microscopy Hippocampus dataset."""
     download_file(DATASET_URL, SAVE_PATH)
 
@@ -17,5 +17,5 @@ def extract_metadata():
 
 def run_tasks():
     """Runs the download and metadata extraction tasks."""
-    download_epfl()
+    download_dataset()
     extract_metadata()
