@@ -89,3 +89,103 @@ def get_tif_metadata(image_path: str, metadata_path: str) -> None:
             print("Error after extracting metadata:", metadata["error"])
     except Exception as e:
         print(f"Error during metadata extraction from {image_path}: {e}")
+
+def extract_all_tif_metadata(filepath, metadata_path: str) -> None:
+    """Extracts all available metadata from a TIFF file using tifffile.
+
+    Args:
+        filepath (str): The path to the TIFF file.
+        metadata_path (str): The path to save the extracted metadata JSON file.
+    """
+    if not os.path.exists(filepath):
+        raise FileNotFoundError(f"File {filepath} not found. Pull it from DVC store by running 'dvc pull'.")
+        
+    print(f"Extracting all available metadata from {filepath}...")
+    all_metadata = {}
+
+    start_time = timer()
+    try:
+        with TiffFile(filepath) as tif:
+            # 1. Global TIFF file information (not specific to any page)
+            all_metadata['global_info'] = {
+                'is_bigtiff': tif.is_bigtiff,
+                'is_ome': tif.is_ome,
+                'is_lsm': tif.is_lsm, # Example for LSM specific
+                'is_fei': tif.is_fei, # Example for FEI specific
+                'byteorder': tif.byteorder,
+                'series_count': len(tif.series),
+                'pages_count': len(tif.pages)
+            }
+
+            # 2. OME-XML metadata (if available at the TiffFile level)
+            # This is typically the most comprehensive for OME-TIFF
+            if tif.ome_metadata is not None:
+                all_metadata['ome_xml_global'] = tif.ome_metadata
+            else:
+                all_metadata['ome_xml_global'] = "No OME-XML metadata found at global level."
+
+            # 3. Proprietary metadata (LSM, FEI, STK, etc.)
+            # These attributes only exist if the file is of that specific type
+            if tif.is_lsm:
+                all_metadata['lsm_metadata'] = tif.lsm_metadata
+            if tif.is_fei:
+                all_metadata['fei_metadata'] = tif.fei_metadata
+
+            # 4. Metadata for each individual TIFF page/IFD
+            all_metadata['pages'] = []
+            for i, page in enumerate(tif.pages):
+                page_data = {
+                    'page_index': i,
+                    'shape': page.shape,
+                    'dtype': str(page.dtype),
+                    'is_tiled': page.is_tiled,
+                    'compression': page.compression,
+                    'photometric': page.photometric,
+                    'resolution': page.resolution,
+                    'resolution_unit': page.resolutionunit,
+                    'x_resolution': page.x_resolution,
+                    'y_resolution': page.y_resolution,
+                    'is_contiguous': page.is_contiguous,
+                    'is_subsampled': page.is_subsampled,
+                    'image_description': page.image_description, # Raw ImageDescription tag string
+                    # Raw TIFF tags for the current page
+                    'tiff_tags': {}
+                }
+
+                for tag in page.tags.values():
+                    try:
+                        # Attempt to get a more structured representation if available
+                        if hasattr(tag, 'value'):
+                            tag_value = tag.value
+                        elif hasattr(tag, 'asarray'): # For array-like tags
+                            tag_value = tag.asarray().tolist()
+                        else:
+                            tag_value = repr(tag) # Fallback to representation
+
+                        page_data['tiff_tags'][tag.name] = tag_value
+                    except Exception as e:
+                        page_data['tiff_tags'][tag.name] = f"Error reading tag: {e}"
+
+                # OME-XML metadata specific to this page (if it's an OME-TIFF page)
+                if page.ome_metadata is not None:
+                    page_data['ome_xml_page'] = page.ome_metadata
+                else:
+                    page_data['ome_xml_page'] = "No OME-XML metadata specific to this page."
+
+                all_metadata['pages'].append(page_data)
+
+        end_time = timer()
+        print(f"All metadata extraction completed in {(end_time - start_time):.2f} seconds.")
+
+        # Save all metadata to a JSON file
+        if "error" not in all_metadata:
+            # Ensure the output directory exists
+            os.makedirs(os.path.dirname(metadata_path), exist_ok=True)
+            # Save metadata to a JSON file
+            json.dump(all_metadata, open(metadata_path, "w"), indent=4)
+            print(f"All metadata extracted and saved to {metadata_path}")
+        else:
+            print("Error after extracting all metadata:", all_metadata["error"])
+
+    except Exception as e:
+        print(f"Error reading TIFF file {filepath}: {e}")

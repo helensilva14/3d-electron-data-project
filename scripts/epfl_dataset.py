@@ -1,8 +1,9 @@
-from utils.helpers import download_file, get_tif_metadata
+from utils.helpers import download_file, get_tif_metadata, extract_all_tif_metadata
 
 DATASET_URL = "https://documents.epfl.ch/groups/c/cv/cvlab-unit/www/data/%20ElectronMicroscopy_Hippocampus/volumedata.tif"
 SAVE_PATH = "data/raw/epfl_volumedata.tif"
 METADATA_FILE = "outputs/epfl_metadata.json"
+ALL_METADATA_FILE = "outputs/epfl_all_metadata.json"
 
 def download_epfl():
     """Downloads the EPFL Electron Microscopy Hippocampus dataset."""
@@ -10,7 +11,8 @@ def download_epfl():
 
 def extract_metadata():
     """Extracts metadata from the downloaded TIFF file and saves it to a JSON file."""
-    get_tif_metadata(SAVE_PATH, METADATA_FILE)
+    # get_tif_metadata(SAVE_PATH, METADATA_FILE)
+    extract_all_tif_metadata(SAVE_PATH, ALL_METADATA_FILE)
 
 if __name__ == "__main__":
     download_epfl()
