@@ -138,3 +138,27 @@ def extract_all_tif_metadata(file_path, metadata_path: str) -> None:
             save_metadata(all_metadata, metadata_path)
         except Exception as e:
             print(f"Error reading TIFF file {file_path}: {e}")
+
+def get_volume_info_metadata(volume_info, metadata_path: str) -> None:
+    """Extracts metadata from a volume info object and saves it to a JSON file.
+
+    Args:
+        volume_info: The volume info object containing metadata.
+        metadata_path (str): The path to save the extracted metadata JSON file.
+    """
+    if os.path.exists(metadata_path):
+        print(f"Metadata file {metadata_path} already exists. Skipping extraction.")
+    elif volume_info is None:
+        print(f"Metadata extraction for a volume info can only be performed at the end of the download process. Skipping extraction.")
+    else:
+        print(f"Metadata file {metadata_path} does not exist. Extracting...")
+        # Ensure the directory exists
+        os.makedirs(os.path.dirname(metadata_path), exist_ok=True)  
+        try:
+            start_time = timer()
+            # Save metadata to a JSON file
+            save_metadata(volume_info, metadata_path)
+            end_time = timer()
+            print(f"Metadata extraction completed in {(end_time - start_time):.2f} seconds.")
+        except Exception as e:
+            print(f"Error during metadata extraction from {str(volume_info)}: {e}")
