@@ -3,8 +3,9 @@ import os
 import json
 
 from timeit import default_timer as timer
-
 from tifffile import TiffFile
+from PIL import Image
+from PIL.ExifTags import TAGS
 
 CHUNK_SIZE = 8192  # Default chunk size for downloading files
 
@@ -54,10 +55,26 @@ def get_tif_metadata(image_path: str, metadata_path: str) -> None:
         metadata = {}
         start_time = timer()
 
+        # Extraction using tifffile
         with TiffFile(image_path) as tif:
             for page in tif.pages:
                 for tag in page.tags:
                     metadata[tag.name] = tag.value
+        # Extraction using PIL
+        with Image.open(image_path) as tif_img_stack:
+            # Collect basic image metadata
+            metadata["ImageSize"] = tif_img_stack.size
+            metadata["Format"] = tif_img_stack.format
+            metadata["Mode"] = tif_img_stack.mode
+            metadata["Info"] = tif_img_stack.info
+            metadata["Frames"] = getattr(tif_img_stack, "n_frames", 1),
+            metadata["IsMultiPage"] = getattr(tif_img_stack, "is_multipage", False)
+            metadata["IsAnimated"] = getattr(tif_img_stack, "is_animated", False)
+            # Get EXIF data
+            exifdata = tif_img_stack.getexif()
+            for tag_id in exifdata:
+                tag = TAGS.get(tag_id, tag_id)
+                metadata[tag] = exifdata.get(tag_id)
 
         end_time = timer()
         print(f"Metadata extraction completed in {(end_time - start_time):.2f} seconds.")
