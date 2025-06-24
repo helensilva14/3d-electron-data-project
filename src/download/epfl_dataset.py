@@ -3,8 +3,8 @@ from utils.metadata import get_brief_tif_metadata, extract_all_tif_metadata
 
 DATASET_URL = "https://documents.epfl.ch/groups/c/cv/cvlab-unit/www/data/%20ElectronMicroscopy_Hippocampus/volumedata.tif"
 SAVE_PATH = "data/raw/epfl_volumedata.tif"
-METADATA_FILE = "outputs/epfl_metadata.json"
-ALL_METADATA_FILE = "outputs/epfl_all_metadata.json"
+METADATA_FILE = "data/outputs/epfl_metadata.json"
+ALL_METADATA_FILE = "data/outputs/epfl_all_metadata.json"
 
 def download_epfl():
     """Downloads the EPFL Electron Microscopy Hippocampus dataset."""
