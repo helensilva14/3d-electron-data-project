@@ -14,10 +14,9 @@ def download_dataset():
 
 def extract_metadata():
     """Extracts metadata from the downloaded TIFF file and saves it to a JSON file."""
-    get_brief_tif_metadata(SAVE_PATH, METADATA_FILE)
-    extract_all_tif_metadata(SAVE_PATH, ALL_METADATA_FILE)
+    pass
 
 def run_tasks():
     """Runs the download and metadata extraction tasks."""
-    download_dataset()
+    # download_dataset()
     # extract_metadata()
