@@ -1,0 +1,5 @@
+outs:
+- md5: 14fc2fb6a5061ea4ea9b69a090c327c9
+  size: 3353674357
+  hash: md5
+  path: epfl_volumedata.tif
