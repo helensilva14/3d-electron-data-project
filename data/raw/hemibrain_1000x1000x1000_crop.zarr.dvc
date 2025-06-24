@@ -1,0 +1,6 @@
+outs:
+- md5: fab19faa94e205af1607bf29ceadcfec.dir
+  size: 32659844
+  nfiles: 2049
+  hash: md5
+  path: hemibrain_1000x1000x1000_crop.zarr
