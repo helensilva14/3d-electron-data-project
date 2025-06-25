@@ -12,10 +12,10 @@ ALL_METADATA_FILE = "outputs/hemibrain_ng_all_metadata.json"
 def download_dataset() -> object:
     """Downloads the Hemibrain Neuroglancer dataset."""
     if os.path.exists(SAVE_PATH):
-        print(f"Dataset already exists at {SAVE_PATH}. Skipping download.")
+        print(f"\nDataset already exists at {SAVE_PATH}. Skipping download.")
         return None
     else:
-        print(f"Dataset not found at {SAVE_PATH}. Proceeding with download...")
+        print(f"\nDataset not found at {SAVE_PATH}. Proceeding with download...")
         # For the specified 1000x1000x1000 pixel crop region:
         # You need to define the bounding box (start_coord_xyz, end_coord_xyz) and the scale.
         # Let's assume you want a crop starting at (0,0,0) for simplicity.
@@ -48,6 +48,7 @@ def download_dataset() -> object:
             # Save the downloaded crop to a local Zarr file
             zarr.save(SAVE_PATH, full_crop)
             print(f"Saved the 1000x1000x1000 crop to {SAVE_PATH}")
+            # TODO: programatically run DVC commands to skip tracking the huge amount of files
 
             return vol.info
 

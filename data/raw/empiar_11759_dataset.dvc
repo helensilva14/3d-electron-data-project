@@ -1,0 +1,6 @@
+outs:
+- md5: 8e3600ffdd5d01a494a37607f9b25c04.dir
+  size: 488985701
+  nfiles: 17
+  hash: md5
+  path: empiar_11759_dataset
