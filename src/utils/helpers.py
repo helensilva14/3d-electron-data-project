@@ -37,7 +37,7 @@ def download_file(url: str, save_path: str) -> None:
     except Exception as e:
         print(f"Error downloading {url}: {e}")
 
-def save_metadata(metadata: dict, save_path: str) -> None:
+def save_metadata_as_json(metadata: dict, save_path: str) -> None:
     """Saves metadata to a JSON file.
 
     Args:

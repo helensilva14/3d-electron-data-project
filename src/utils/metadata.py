@@ -5,7 +5,7 @@ from PIL import Image
 from PIL.ExifTags import TAGS
 from tifffile import TiffFile
 
-from utils.helpers import save_metadata
+from utils.helpers import save_metadata_as_json
 
 def get_brief_tif_metadata(file_path: str, metadata_path: str) -> None:
     """Extracts basic metadata from a TIFF file using PIL (Pillow) and saves it to a JSON file.
@@ -45,7 +45,7 @@ def get_brief_tif_metadata(file_path: str, metadata_path: str) -> None:
             print(f"Metadata extraction completed in {(end_time - start_time):.2f} seconds.")
             
             # Save metadata to a JSON file
-            save_metadata(metadata, metadata_path)
+            save_metadata_as_json(metadata, metadata_path)
         except Exception as e:
             print(f"Error during metadata extraction from {file_path}: {e}")
 
@@ -135,7 +135,7 @@ def extract_all_tif_metadata(file_path, metadata_path: str) -> None:
             print(f"All metadata extraction completed in {(end_time - start_time):.2f} seconds.")
 
             # Save all metadata to a JSON file
-            save_metadata(all_metadata, metadata_path)
+            save_metadata_as_json(all_metadata, metadata_path)
         except Exception as e:
             print(f"Error reading TIFF file {file_path}: {e}")
 
@@ -157,7 +157,7 @@ def get_volume_info_metadata(volume_info, metadata_path: str) -> None:
         try:
             start_time = timer()
             # Save metadata to a JSON file
-            save_metadata(volume_info, metadata_path)
+            save_metadata_as_json(volume_info, metadata_path)
             end_time = timer()
             print(f"Metadata extraction completed in {(end_time - start_time):.2f} seconds.")
         except Exception as e:
