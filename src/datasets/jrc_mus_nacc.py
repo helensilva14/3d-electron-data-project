@@ -31,6 +31,31 @@ def download_dataset():
     except Exception as e:
         print(f"\nError downloading {BUCKET_ROOT}/{INTERNAL_PATH}: {e}")
 
+def _process_xarray_dict_attributes(xarray_dict_like_obj):
+    """
+    Processes a dictionary-like object (like .coords or .attrs) from Xarray.
+    If a value is an Xarray object, it summarizes it to prevent deep recursion.
+    """
+    if not hasattr(xarray_dict_like_obj, 'items'): # Ensure it's dict-like
+        return {}
+
+    processed_dict = {}
+    for k, v in xarray_dict_like_obj.items():
+        if isinstance(v, (xr.DataArray, xr.DataTree)):
+            # Summarize Xarray objects within coords/attrs to break recursion cycles
+            processed_dict[k] = {
+                "type": "DataArray (summarized)" if isinstance(v, xr.DataArray) else "DataTree (summarized)",
+                "shape": v.shape if hasattr(v, 'shape') else None,
+                "dtype": str(v.dtype) if hasattr(v, 'dtype') else None,
+                "dims": list(v.dims) if hasattr(v, 'dims') else [],
+                # Do NOT recurse into v.coords or v.attrs here
+                "summary_only": True
+            }
+        else:
+            # For other types, use the general serialization function
+            processed_dict[k] = _to_json_serializable(v)
+    return processed_dict
+
 def _to_json_serializable(obj):
     # Handle basic JSON-serializable types first to avoid unnecessary recursion or complex checks
     if obj is None or isinstance(obj, (int, float, bool, str)):
@@ -70,31 +95,6 @@ def _to_json_serializable(obj):
             return _to_json_serializable(list(obj))
     else:
         return str(obj) # Force conversion to string if truly unhandled
-
-def _process_xarray_dict_attributes(xarray_dict_like_obj):
-    """
-    Processes a dictionary-like object (like .coords or .attrs) from Xarray.
-    If a value is an Xarray object, it summarizes it to prevent deep recursion.
-    """
-    if not hasattr(xarray_dict_like_obj, 'items'): # Ensure it's dict-like
-        return {}
-
-    processed_dict = {}
-    for k, v in xarray_dict_like_obj.items():
-        if isinstance(v, (xr.DataArray, xr.DataTree)):
-            # Summarize Xarray objects within coords/attrs to break recursion cycles
-            processed_dict[k] = {
-                "type": "DataArray (summarized)" if isinstance(v, xr.DataArray) else "DataTree (summarized)",
-                "shape": v.shape if hasattr(v, 'shape') else None,
-                "dtype": str(v.dtype) if hasattr(v, 'dtype') else None,
-                "dims": list(v.dims) if hasattr(v, 'dims') else [],
-                # Do NOT recurse into v.coords or v.attrs here
-                "summary_only": True
-            }
-        else:
-            # For other types, use the general serialization function
-            processed_dict[k] = _to_json_serializable(v)
-    return processed_dict
 
 def extract_metadata():
     """Extracts metadata from the downloaded Zarr container and saves it to a JSON file."""
