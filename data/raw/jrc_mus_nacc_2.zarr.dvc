@@ -1,0 +1,6 @@
+outs:
+- md5: 98f3981835a7f0088e5c9680bfc7fa63.dir
+  size: 4651506383
+  nfiles: 17285
+  hash: md5
+  path: jrc_mus_nacc_2.zarr
