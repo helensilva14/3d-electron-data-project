@@ -1,14 +1,15 @@
 import ftplib
 import sys
+import os
 
 from utils.helpers import download_ftp_files
+from utils.metadata import extract_dm3_metadata
 
 FTP_HOST = "ftp.ebi.ac.uk"
 FTP_PATH = "/empiar/world_availability/11759/data/"
 SAVE_PATH = "data/raw/empiar_11759_dataset"
 
-METADATA_FILE = "outputs/empiar_11759_metadata.json"
-ALL_METADATA_FILE = "outputs/empiar_11759_all_metadata.json"
+METADATA_FOLDER = "outputs/empiar_11759_metadata"
 
 def download_dataset():
     """Downloads the EMPIAR 11759 (Developing retina in zebrafish 55 hpf larval eye) dataset."""
@@ -25,8 +26,11 @@ def download_dataset():
         print(f"An unexpected error occurred: {e}", file=sys.stderr)
 
 def extract_metadata():
-    """Extracts metadata from the downloaded Zarr file and saves it to a JSON file."""
-    pass
+    """Extracts metadata from the downloaded DM3 files in the dataset."""
+    for root, _, files in os.walk(SAVE_PATH):
+        for file_name in files:
+                file_path = os.path.join(root, file_name)
+                extract_dm3_metadata(file_path, METADATA_FOLDER)
 
 def run_tasks():
     """Runs the download and metadata extraction tasks."""

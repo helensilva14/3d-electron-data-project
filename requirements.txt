@@ -34,8 +34,10 @@ cloudpickle==3.1.1
 colorama==0.4.6
 compressed_segmentation==2.3.2
 configobj==5.0.9
+contourpy==1.3.2
 crc32c==2.7.1
 cryptography==45.0.4
+cycler==0.12.1
 dask==2025.5.1
 deflate==0.8.0
 Deprecated==1.2.18
@@ -44,6 +46,7 @@ dill==0.4.0
 diskcache==5.6.3
 distributed==2025.5.1
 distro==1.9.0
+dm3_lib @ git+https://github.com/piraynal/pyDM3reader.git@3a56ac751a693b7130ae9d9360a0fee655092cbf
 dpath==2.2.0
 DracoPy==1.5.0
 dulwich==0.23.0
@@ -64,6 +67,7 @@ flatten-dict==0.4.2
 flexcache==0.3
 flexparser==0.4
 flufl.lock==8.2.0
+fonttools==4.58.4
 frozenlist==1.7.0
 fsspec==2025.5.1
 funcy==2.0
@@ -80,7 +84,6 @@ googleapis-common-protos==1.70.0
 grandalf==0.8
 greenlet==3.2.3
 gto==1.7.2
-h5py==3.14.0
 hydra-core==1.3.2
 idna==3.10
 imagecodecs==2025.3.30
@@ -92,6 +95,7 @@ jmespath==1.0.1
 json5==0.12.0
 jsonschema==4.24.0
 jsonschema-specifications==2025.4.1
+kiwisolver==1.4.8
 kombu==5.5.4
 locket==1.0.0
 Markdown==3.8.2

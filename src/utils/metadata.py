@@ -1,4 +1,7 @@
 import os
+import dm3_lib
+import sys
+import numpy as np
 
 from timeit import default_timer as timer
 from PIL import Image
@@ -162,3 +165,72 @@ def get_volume_info_metadata(volume_info, metadata_path: str) -> None:
             print(f"Metadata extraction completed in {(end_time - start_time):.2f} seconds.")
         except Exception as e:
             print(f"Error during metadata extraction from {str(volume_info)}: {e}")
+
+def extract_dm3_metadata(filepath: str, folder_path: str) -> None:
+    """
+    Extracts all available metadata from a DM3 file using pyDM3reader.
+
+    Args:
+        filepath (str): The path to the DM3 file.
+
+    Returns:
+        dict: A dictionary containing all extracted metadata.
+              Returns None if the file cannot be read or an error occurs.
+    """
+    try:
+        dm3_file = dm3_lib.DM3(filepath) # Use the DM3 class from pyDM3reader
+
+        # Start with common, easily accessible metadata
+        metadata = {
+            "filename": dm3_file.filename,
+            "file_version": dm3_file.file_version,
+            "image_summary": { # Summarize image data, not include it
+                "size": dm3_file.size,
+                "dtype": dm3_file.data_type_str if dm3_file.data_type_str else None,
+                "pixel_size_value": dm3_file.pxsize[0] if dm3_file.pxsize else None,
+                "pixel_size_unit": dm3_file.pxsize[1] if dm3_file.pxsize else None,
+                "cuts": dm3_file.cuts
+            }
+        }
+
+        if dm3_file.tags:
+            # Recursively clean and include the entire tag tree
+            metadata["full_original_tags"] = _to_json_serializable_recursive(dm3_file.tags)
+        if dm3_file.info:
+            # Recursively clean and include the entire info structure
+            metadata["info"] = _to_json_serializable_recursive(dm3_file.info)
+
+        # Save metadata to a JSON file
+        filename_only = os.path.splitext(os.path.basename(filepath))[0] # Remove extension
+        metadata_file_name = os.path.join(folder_path, f"{filename_only}_metadata.json")
+        save_metadata_as_json(metadata, metadata_file_name)
+
+    except FileNotFoundError:
+        print(f"Error: File not found at {filepath}", file=sys.stderr)
+        return None
+    except Exception as e:
+        print(f"Error reading DM3 file {filepath} with pyDM3reader: {e}", file=sys.stderr)
+        return None
+
+def _to_json_serializable_recursive(value):
+    if isinstance(value, bytes):
+        # Convert bytes to a string representation
+        return value.decode('utf-8', errors='ignore')
+    if isinstance(value, np.ndarray):
+        # Image data array, skip
+        return "Image data (NumPy array) skipped for JSON serialization"
+    elif isinstance(value, (np.integer, np.floating, np.bool_)):
+        return value.item() # Convert NumPy scalar to Python scalar
+    elif isinstance(value, dict):
+        cleaned_dict = {}
+        for k, v in value.items():
+            # pyDM3reader's internal structure might have keys like 'ImageData'
+            # which might hold the actual array. Adapt this check if needed.
+            if k == 'ImageData' and isinstance(v, np.ndarray):
+                 cleaned_dict[k] = "Image data (NumPy array) skipped for JSON serialization"
+            else:
+                 cleaned_dict[k] = _to_json_serializable_recursive(v)
+        return cleaned_dict
+    elif isinstance(value, (list, tuple)):
+        return [_to_json_serializable_recursive(item) for item in value]
+    return value
