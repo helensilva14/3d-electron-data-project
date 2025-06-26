@@ -1,0 +1,628 @@
+{
+    "root_attrs": {
+        "multiscales": [
+            {
+                "axes": [
+                    {
+                        "name": "z",
+                        "type": "space",
+                        "unit": "nanometer"
+                    },
+                    {
+                        "name": "y",
+                        "type": "space",
+                        "unit": "nanometer"
+                    },
+                    {
+                        "name": "x",
+                        "type": "space",
+                        "unit": "nanometer"
+                    }
+                ],
+                "coordinateTransformations": [
+                    {
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "scale"
+                    }
+                ],
+                "datasets": [
+                    {
+                        "coordinateTransformations": [
+                            {
+                                "scale": [
+                                    2.96,
+                                    4.0,
+                                    4.0
+                                ],
+                                "type": "scale"
+                            },
+                            {
+                                "translation": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ],
+                                "type": "translation"
+                            }
+                        ],
+                        "path": "s0"
+                    },
+                    {
+                        "coordinateTransformations": [
+                            {
+                                "scale": [
+                                    5.92,
+                                    8.0,
+                                    8.0
+                                ],
+                                "type": "scale"
+                            },
+                            {
+                                "translation": [
+                                    1.48,
+                                    2.0,
+                                    2.0
+                                ],
+                                "type": "translation"
+                            }
+                        ],
+                        "path": "s1"
+                    },
+                    {
+                        "coordinateTransformations": [
+                            {
+                                "scale": [
+                                    11.840000000000002,
+                                    16.0,
+                                    16.0
+                                ],
+                                "type": "scale"
+                            },
+                            {
+                                "translation": [
+                                    4.4399999999999995,
+                                    6.0,
+                                    6.0
+                                ],
+                                "type": "translation"
+                            }
+                        ],
+                        "path": "s2"
+                    },
+                    {
+                        "coordinateTransformations": [
+                            {
+                                "scale": [
+                                    23.68,
+                                    32.0,
+                                    32.0
+                                ],
+                                "type": "scale"
+                            },
+                            {
+                                "translation": [
+                                    10.36,
+                                    14.0,
+                                    14.0
+                                ],
+                                "type": "translation"
+                            }
+                        ],
+                        "path": "s3"
+                    },
+                    {
+                        "coordinateTransformations": [
+                            {
+                                "scale": [
+                                    47.36,
+                                    64.0,
+                                    64.0
+                                ],
+                                "type": "scale"
+                            },
+                            {
+                                "translation": [
+                                    22.2,
+                                    30.0,
+                                    30.0
+                                ],
+                                "type": "translation"
+                            }
+                        ],
+                        "path": "s4"
+                    },
+                    {
+                        "coordinateTransformations": [
+                            {
+                                "scale": [
+                                    94.72,
+                                    128.0,
+                                    128.0
+                                ],
+                                "type": "scale"
+                            },
+                            {
+                                "translation": [
+                                    45.88,
+                                    62.0,
+                                    62.0
+                                ],
+                                "type": "translation"
+                            }
+                        ],
+                        "path": "s5"
+                    },
+                    {
+                        "coordinateTransformations": [
+                            {
+                                "scale": [
+                                    189.44,
+                                    256.0,
+                                    256.0
+                                ],
+                                "type": "scale"
+                            },
+                            {
+                                "translation": [
+                                    93.24,
+                                    126.0,
+                                    126.0
+                                ],
+                                "type": "translation"
+                            }
+                        ],
+                        "path": "s6"
+                    },
+                    {
+                        "coordinateTransformations": [
+                            {
+                                "scale": [
+                                    378.8799999999999,
+                                    512.0,
+                                    512.0
+                                ],
+                                "type": "scale"
+                            },
+                            {
+                                "translation": [
+                                    187.96,
+                                    254.0,
+                                    254.0
+                                ],
+                                "type": "translation"
+                            }
+                        ],
+                        "path": "s7"
+                    },
+                    {
+                        "coordinateTransformations": [
+                            {
+                                "scale": [
+                                    757.7599999999999,
+                                    1024.0,
+                                    1024.0
+                                ],
+                                "type": "scale"
+                            },
+                            {
+                                "translation": [
+                                    377.4,
+                                    510.0,
+                                    510.0
+                                ],
+                                "type": "translation"
+                            }
+                        ],
+                        "path": "s8"
+                    }
+                ],
+                "metadata": null,
+                "name": "",
+                "type": null,
+                "version": "0.4"
+            }
+        ]
+    },
+    "children_metadata": {
+        "s0": {
+            "type": "DataTree",
+            "dims": [
+                "z",
+                "y",
+                "x"
+            ],
+            "coords": {
+                "z": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        564
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "z"
+                    ],
+                    "summary_only": true
+                },
+                "y": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        2520
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "y"
+                    ],
+                    "summary_only": true
+                },
+                "x": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        2596
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "x"
+                    ],
+                    "summary_only": true
+                }
+            },
+            "attrs": {}
+        },
+        "s1": {
+            "type": "DataTree",
+            "dims": [
+                "z",
+                "y",
+                "x"
+            ],
+            "coords": {
+                "z": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        282
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "z"
+                    ],
+                    "summary_only": true
+                },
+                "y": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        1260
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "y"
+                    ],
+                    "summary_only": true
+                },
+                "x": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        1298
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "x"
+                    ],
+                    "summary_only": true
+                }
+            },
+            "attrs": {}
+        },
+        "s2": {
+            "type": "DataTree",
+            "dims": [
+                "z",
+                "y",
+                "x"
+            ],
+            "coords": {
+                "z": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        141
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "z"
+                    ],
+                    "summary_only": true
+                },
+                "y": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        630
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "y"
+                    ],
+                    "summary_only": true
+                },
+                "x": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        649
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "x"
+                    ],
+                    "summary_only": true
+                }
+            },
+            "attrs": {}
+        },
+        "s3": {
+            "type": "DataTree",
+            "dims": [
+                "z",
+                "y",
+                "x"
+            ],
+            "coords": {
+                "z": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        70
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "z"
+                    ],
+                    "summary_only": true
+                },
+                "y": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        315
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "y"
+                    ],
+                    "summary_only": true
+                },
+                "x": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        324
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "x"
+                    ],
+                    "summary_only": true
+                }
+            },
+            "attrs": {}
+        },
+        "s4": {
+            "type": "DataTree",
+            "dims": [
+                "z",
+                "y",
+                "x"
+            ],
+            "coords": {
+                "z": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        35
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "z"
+                    ],
+                    "summary_only": true
+                },
+                "y": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        157
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "y"
+                    ],
+                    "summary_only": true
+                },
+                "x": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        162
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "x"
+                    ],
+                    "summary_only": true
+                }
+            },
+            "attrs": {}
+        },
+        "s5": {
+            "type": "DataTree",
+            "dims": [
+                "z",
+                "y",
+                "x"
+            ],
+            "coords": {
+                "z": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        17
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "z"
+                    ],
+                    "summary_only": true
+                },
+                "y": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        78
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "y"
+                    ],
+                    "summary_only": true
+                },
+                "x": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        81
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "x"
+                    ],
+                    "summary_only": true
+                }
+            },
+            "attrs": {}
+        },
+        "s6": {
+            "type": "DataTree",
+            "dims": [
+                "z",
+                "y",
+                "x"
+            ],
+            "coords": {
+                "z": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        8
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "z"
+                    ],
+                    "summary_only": true
+                },
+                "y": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        39
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "y"
+                    ],
+                    "summary_only": true
+                },
+                "x": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        40
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "x"
+                    ],
+                    "summary_only": true
+                }
+            },
+            "attrs": {}
+        },
+        "s7": {
+            "type": "DataTree",
+            "dims": [
+                "z",
+                "y",
+                "x"
+            ],
+            "coords": {
+                "z": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "z"
+                    ],
+                    "summary_only": true
+                },
+                "y": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        19
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "y"
+                    ],
+                    "summary_only": true
+                },
+                "x": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        20
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "x"
+                    ],
+                    "summary_only": true
+                }
+            },
+            "attrs": {}
+        },
+        "s8": {
+            "type": "DataTree",
+            "dims": [
+                "z",
+                "y",
+                "x"
+            ],
+            "coords": {
+                "z": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        2
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "z"
+                    ],
+                    "summary_only": true
+                },
+                "y": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        9
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "y"
+                    ],
+                    "summary_only": true
+                },
+                "x": {
+                    "type": "DataArray (summarized)",
+                    "shape": [
+                        10
+                    ],
+                    "dtype": "float64",
+                    "dims": [
+                        "x"
+                    ],
+                    "summary_only": true
+                }
+            },
+            "attrs": {}
+        }
+    }
+}

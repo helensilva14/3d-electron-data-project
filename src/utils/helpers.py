@@ -35,7 +35,6 @@ def download_file(url: str, save_path: str) -> None:
             print(f"Download completed in {(end_time - start_time):.2f} seconds.")
         else:
             print(f"\nFile {save_path} already exists. Skipping download.")
-            return
     except Exception as e:
         print(f"\nError downloading {url}: {e}")
 
