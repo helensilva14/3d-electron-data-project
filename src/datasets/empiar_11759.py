@@ -20,7 +20,7 @@ def download_dataset():
         print(f"\nDataset not found at {SAVE_PATH}. Proceeding with download...")
         try:
             with ftplib.FTP(FTP_HOST) as ftp:
-                print(f"\nConnected to FTP server: {FTP_HOST}")
+                print(f"Connected to FTP server: {FTP_HOST}")
                 ftp.login() # No username/password needed for anonymous login for public FTPs
                 ftp.encoding = "utf-8" # Ensure correct encoding for filenames
                 download_ftp_files(ftp, FTP_PATH, SAVE_PATH)

@@ -19,28 +19,21 @@ def download_dataset():
         print(f"\nDataset already exists at {SAVE_PATH}. Skipping download.")
     else:
         print(f"\nDataset not found at {SAVE_PATH}. Proceeding with download...")
+        os.makedirs(SAVE_PATH, exist_ok=True)
+        start_time = timer()
+
         try:
             with ftplib.FTP(FTP_HOST) as ftp:
-                print(f"\nConnected to FTP server: {FTP_HOST}")
+                print(f"Connected to FTP server: {FTP_HOST}")
                 ftp.login() # No username/password needed for anonymous login for public FTPs
                 ftp.encoding = "utf-8" # Ensure correct encoding for filenames
-
-                # Change directory
+                # Change directory within the FTP server
                 ftp.cwd(FTP_PATH)
 
-                # Get a list of files in the directory
-                files = ftp.nlst()
-
                 # Filter files based on the pattern
-                matching_files = fnmatch.filter(files, FTP_FILE_PATTERN)
-                # Ensure the output directory exists
-                os.makedirs(SAVE_PATH, exist_ok=True)
-
-                # Download the filtered files
+                matching_files = fnmatch.filter(ftp.nlst(), FTP_FILE_PATTERN)
                 for filename in matching_files:
                     local_filepath = os.path.join(SAVE_PATH, filename)
-                    print(f"Downloading {filename} to {local_filepath}")
-
                     with open(local_filepath, "wb") as local_file:
                         ftp.retrbinary(f"RETR {filename}", local_file.write)
 
@@ -48,6 +41,9 @@ def download_dataset():
             print(f"FTP Error: {e}", file=sys.stderr)
         except Exception as e:
             print(f"An unexpected error occurred: {e}", file=sys.stderr)
+
+        end_time = timer()
+        print(f"Download completed in {(end_time - start_time):.2f} seconds.")
 
 def extract_metadata():
     """Extracts metadata from the downloaded TIFF files in the dataset."""
@@ -61,10 +57,9 @@ def extract_metadata():
         for root, _, files in os.walk(SAVE_PATH):
             for file_name in files:
                 file_path = os.path.join(root, file_name)
-
                 filename_only = os.path.splitext(file_path)[0] # Remove extension
-                metadata_file_name = os.path.join(METADATA_FOLDER, f"{filename_only}_metadata.json")
 
+                metadata_file_name = os.path.join(METADATA_FOLDER, f"{filename_only}_metadata.json")
                 extract_all_tif_metadata(file_path, metadata_file_name)
         
         end_time = timer()
