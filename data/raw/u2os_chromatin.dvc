@@ -1,0 +1,6 @@
+outs:
+- md5: 3624fb6af2fcc3781b34efdad0075fb4.dir
+  size: 319864790
+  nfiles: 2
+  hash: md5
+  path: u2os_chromatin
