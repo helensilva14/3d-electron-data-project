@@ -5,7 +5,7 @@ def main():
     epfl_hippocampus.run_tasks()
     hemibrain_ng.run_tasks()
     jrc_mus_nacc.run_tasks()
-    # u2os_chromatin.run_tasks()
+    u2os_chromatin.run_tasks()
 
     # TODO: Consolidate all metadata files into a single JSON file
 
