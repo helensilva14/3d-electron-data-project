@@ -9,10 +9,9 @@ from utils.helpers import save_metadata_as_json
 
 BUCKET_ROOT = "s3://janelia-cosem-datasets"
 INTERNAL_PATH = "jrc_mus-nacc-2/jrc_mus-nacc-2.zarr/recon-2/em/fibsem-int16/"
-SAVE_PATH = "data/raw/jrc_mus_nacc_2.zarr/"
 
+SAVE_PATH = "data/raw/jrc_mus_nacc_2.zarr/"
 METADATA_FILE = "outputs/jrc_mus_nacc_2_metadata.json"
-ALL_METADATA_FILE = "outputs/jrc_mus_nacc_2_all_metadata.json"
 
 def download_dataset():
     """Downloads the Janelia Mouse nucleus accumbens dataset."""
@@ -31,89 +30,116 @@ def download_dataset():
     except Exception as e:
         print(f"\nError downloading {BUCKET_ROOT}/{INTERNAL_PATH}: {e}")
 
-def _process_xarray_dict_attributes(xarray_dict_like_obj):
+def _process_xarray_dict_items(xarray_dict_like_obj) -> dict:
     """
     Processes a dictionary-like object (like .coords or .attrs) from Xarray.
-    If a value is an Xarray object, it summarizes it to prevent deep recursion.
+    If a value is an Xarray object, it summarizes it to prevent deep recursion in the serialization function.
+
+    Args:
+        xarray_dict_like_obj (dict-like): The Xarray dictionary-like object to process.
+
+    Returns:
+        dict: A JSON-serializable dictionary with summarized Xarray objects.
     """
-    if not hasattr(xarray_dict_like_obj, 'items'): # Ensure it's dict-like
+    # Ensure it's dict-like
+    if not hasattr(xarray_dict_like_obj, 'items'):
         return {}
 
     processed_dict = {}
-    for k, v in xarray_dict_like_obj.items():
-        if isinstance(v, (xr.DataArray, xr.DataTree)):
+    for key, value in xarray_dict_like_obj.items():
+        if isinstance(value, (xr.DataArray, xr.DataTree)):
             # Summarize Xarray objects within coords/attrs to break recursion cycles
-            processed_dict[k] = {
-                "type": "DataArray (summarized)" if isinstance(v, xr.DataArray) else "DataTree (summarized)",
-                "shape": v.shape if hasattr(v, 'shape') else None,
-                "dtype": str(v.dtype) if hasattr(v, 'dtype') else None,
-                "dims": list(v.dims) if hasattr(v, 'dims') else [],
-                # Do NOT recurse into v.coords or v.attrs here
+            processed_dict[key] = {
+                "type": "DataArray (summarized)" if isinstance(value, xr.DataArray) else "DataTree (summarized)",
+                "shape": value.shape if hasattr(value, 'shape') else None,
+                "dtype": str(value.dtype) if hasattr(value, 'dtype') else None,
+                "dims": list(value.dims) if hasattr(value, 'dims') else [],
+                # IMPORTANT: not recursing into value.coords or value.attrs here
                 "summary_only": True
             }
         else:
-            # For other types, use the general serialization function
-            processed_dict[k] = _to_json_serializable(v)
+            processed_dict[key] = _to_json_serializable_recursive(value)
+    
     return processed_dict
 
-def _to_json_serializable(obj):
-    # Handle basic JSON-serializable types first to avoid unnecessary recursion or complex checks
+def _to_json_serializable_recursive(obj) -> object:
+    """ Recursively converts an object to a JSON-serializable format.
+    Handles various data types, including NumPy arrays, Xarray DataArrays, and other complex objects.
+    
+    Args:
+        obj: The object to convert to a JSON-serializable format.
+    
+    Returns:
+        A JSON-serializable version of the object.
+    """
+    # Basic JSON-serializable types first to avoid unnecessary recursion or complex checks
     if obj is None or isinstance(obj, (int, float, bool, str)):
         return obj
+    # Convert NumPy scalars to Python native types
     elif isinstance(obj, (np.integer, np.floating, np.bool_)):
-        return obj.item() # Convert NumPy scalars to Python native types
-    elif hasattr(obj, 'isoformat'): # For datetime objects (e.g., pandas Timestamps)
+        return obj.item()
+    # For datetime objects (e.g., pandas Timestamps)
+    elif hasattr(obj, 'isoformat'): 
         return obj.isoformat()
     
     elif isinstance(obj, xr.DataTree):
-        # Extract direct properties
-        result = {
+        obj_as_dict = {
             "type": "DataTree",
-            # DataTree.dims is usually a tuple of its children's dims, convert to list
             "dims": list(obj.dims) if hasattr(obj, 'dims') and obj.dims is not None else [],
         }
-        # Handle its own attributes and coordinates similarly
-        result["coords"] = _process_xarray_dict_attributes(obj.coords) if hasattr(obj, 'coords') else {}
-        result["attrs"] = _process_xarray_dict_attributes(obj.attrs) if hasattr(obj, 'attrs') else {}
-        return result
+        obj_as_dict["coords"] = _process_xarray_dict_items(obj.coords) if hasattr(obj, 'coords') else {}
+        obj_as_dict["attrs"] = _process_xarray_dict_items(obj.attrs) if hasattr(obj, 'attrs') else {}
+        return obj_as_dict
 
-    # Handle standard Python collections (dictionaries and lists/tuples)
-    # This comes AFTER Xarray objects to ensure they are caught by their specific handlers
+    # Python collections AFTER Xarray objects to ensure they are caught by their specific handlers
     elif isinstance(obj, dict):
-        return {k: _to_json_serializable(v) for k, v in obj.items()}
+        return {k: _to_json_serializable_recursive(v) for k, v in obj.items()}
     elif isinstance(obj, (list, tuple)):
-        return [_to_json_serializable(elem) for elem in obj]
+        return [_to_json_serializable_recursive(elem) for elem in obj]
 
     # Fallback for any other iterable/mapping (e.g., xarray's internal Frozen objects)
     # This needs to be at the end to catch anything not explicitly handled.
     elif hasattr(obj, '__iter__') and not isinstance(obj, str):
         try:
-            # Try to convert to dict
-            return _to_json_serializable(dict(obj))
+            return _to_json_serializable_recursive(dict(obj))
         except TypeError:
-            # If dict() fails, try converting to list
-            return _to_json_serializable(list(obj))
+            # If dict() conversion fails, default to list conversion
+            return _to_json_serializable_recursive(list(obj))
     else:
-        return str(obj) # Force conversion to string if truly unhandled
+        # Force conversion to string if truly unhandled after all checks
+        return str(obj) 
 
 def extract_metadata():
     """Extracts metadata from the downloaded Zarr container and saves it to a JSON file."""
-    dtree = fibsem_tools.read_xarray(SAVE_PATH)
-    extracted_metadata = {}
+    try:
+        if os.path.exists(METADATA_FILE):
+            print(f"Metadata file already exists at {METADATA_FILE}. Skipping extraction.")
+        else:
+            print(f"Metadata file not found at {METADATA_FILE}. Proceeding with extraction...")
+            start_time = timer()
+            extracted_metadata = {}
+            
+            # Load previously downloaded Zarr container
+            datatree = fibsem_tools.read_xarray(SAVE_PATH)
 
-    # 1. Get top-level DataTree attributes
-    if dtree.attrs:
-        # Pass DataTree attrs to the new helper
-        extracted_metadata['root_attrs'] = _process_xarray_dict_attributes(dtree.attrs)
+            # Get top-level DataTree attributes
+            if datatree.attrs:
+                extracted_metadata['root_attrs'] = _process_xarray_dict_items(datatree.attrs)
 
-    # 2. Traverse children (DataArrays and nested DataTrees)
-    child_metadata = {}
-    for name, node in dtree.items():
-        child_metadata[name] = _to_json_serializable(node) # This will correctly handle DataArray/DataTree children
+            # Get info from all DataTree items (DataArrays and nested DataTrees)
+            child_metadata = {}
+            for name, node in datatree.items():
+                child_metadata[name] = _to_json_serializable_recursive(node)
+            
+            extracted_metadata['children_metadata'] = child_metadata
+            # Save metadata to a JSON file
+            save_metadata_as_json(extracted_metadata, METADATA_FILE)
 
-    extracted_metadata['children_metadata'] = child_metadata
+            end_time = timer()
+            print(f"Metadata extraction completed in {(end_time - start_time):.2f} seconds.")
 
-    save_metadata_as_json(extracted_metadata, METADATA_FILE)
+    except Exception as e:
+        print(f"\nError extracting metadata from {SAVE_PATH}: {e}")
 
 def run_tasks():
     """Runs the download and metadata extraction tasks."""
