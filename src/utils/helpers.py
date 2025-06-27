@@ -87,7 +87,7 @@ def download_ftp_files(ftp: ftplib.FTP, remote_path: str, save_path: str) -> Non
         print(f"An unexpected error occurred while listing {remote_path} with nlst(): {e}. Skipping this directory.", file=sys.stderr)
         return
 
-    print(f"Found {len(items)} items in {remote_path}. Subdirectories will be skipped.")
+    print(f"Found {len(items)} items. Subdirectories will be skipped.")
     print(f"Starting download from {remote_path} to {save_path}...")
     start_time = timer()
     

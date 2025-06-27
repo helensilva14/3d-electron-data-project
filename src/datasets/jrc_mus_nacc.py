@@ -113,7 +113,7 @@ def extract_metadata():
     """Extracts metadata from the downloaded Zarr container and saves it to a JSON file."""
     try:
         if os.path.exists(METADATA_FILE):
-            print(f"Metadata file already exists at {METADATA_FILE}. Skipping extraction.")
+            print(f"Metadata file {METADATA_FILE} already exists. Skipping extraction.")
         else:
             print(f"Metadata file not found at {METADATA_FILE}. Proceeding with extraction...")
             start_time = timer()
