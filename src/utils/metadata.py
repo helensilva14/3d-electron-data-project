@@ -7,6 +7,7 @@ from timeit import default_timer as timer
 from PIL import Image
 from PIL.ExifTags import TAGS
 from tifffile import TiffFile
+from collections import defaultdict
 
 from utils.helpers import save_metadata_as_json
 
@@ -246,3 +247,64 @@ def _dm3_item_to_json_serializable_recursive(value: object) -> object:
     elif isinstance(value, (list, tuple)):
         return [_dm3_item_to_json_serializable_recursive(item) for item in value]
     return value
+
+def _find_all_attribute_names(metadata_dict, current_path=""):
+    """ Recursively finds all unique attribute names in a nested dictionary structure,
+    returning them as a set of strings with their full paths.
+    
+    Args:
+        metadata_dict (dict): The metadata dictionary to search.
+        current_path (str): The current path in the nested structure, used for recursion.
+    
+    Returns:
+        A set of unique attribute names with their full paths.
+    """
+    attribute_names = set()
+
+    if isinstance(metadata_dict, dict):
+        for key, value in metadata_dict.items():
+            full_path_key = f"{current_path}.{key}" if current_path else key
+
+            if isinstance(value, dict):
+                attribute_names.update(
+                    _find_all_attribute_names(value, full_path_key)
+                )
+            elif isinstance(value, list):
+                for i, item in enumerate(value):
+                    attribute_names.update(
+                        _find_all_attribute_names(item, f"{full_path_key}[{i}]")
+                    )
+            else:
+                attribute_names.add(full_path_key)
+
+    return attribute_names
+
+def consolidate_attribute_names(all_metadata_by_filename):
+    """Consolidates attribute names from multiple metadata files, identifying those present in multiple datasets.
+
+    Args:
+        all_metadata_by_filename (dict): A dictionary mapping filenames to their metadata content.
+
+    Returns:
+        dict: A dictionary with consolidated attribute names and their dataset mappings.
+    """
+    attribute_presence = defaultdict(set) # Maps attribute_name -> set of filenames
+
+    for filename, metadata_content in all_metadata_by_filename.items():
+        
+        current_dataset_attributes = _find_all_attribute_names(metadata_content)
+        for attr_name in current_dataset_attributes:
+            attribute_presence[attr_name].add(filename)
+
+    return {
+        "attributes_present_in_multiple_datasets": {
+            attr: list(files)
+            for attr, files in attribute_presence.items()
+            if len(files) > 1
+        },
+        "attributes_unique_to_single_datasets": {
+            attr: list(files)
+            for attr, files in attribute_presence.items()
+            if len(files) == 1
+        },
+    }

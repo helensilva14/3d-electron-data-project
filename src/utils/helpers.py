@@ -116,3 +116,28 @@ def download_ftp_files(ftp: ftplib.FTP, remote_path: str, save_path: str) -> Non
 
     end_time = timer()
     print(f"Download completed in {(end_time - start_time):.2f} seconds.")
+
+def load_all_metadata_by_filename(json_directory: str) -> dict:
+    """
+    Loads all JSON metadata files from a directory,
+    returning a dictionary with filenames (without extension) as keys.
+    """
+    all_metadata_by_filename = {}
+    for full_filename in os.listdir(json_directory):
+        if full_filename.endswith(".json"):
+            filepath = os.path.join(json_directory, full_filename)
+            file_key = os.path.splitext(full_filename)[0] # Filename without extension
+            try:
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    all_metadata_by_filename[file_key] = data
+            except json.JSONDecodeError as e:
+                print(f"Error decoding JSON from {filepath}: {e}", file=sys.stderr)
+            except Exception as e:
+                print(f"Error reading file {filepath}: {e}", file=sys.stderr)
+        if os.path.isdir(os.path.join(json_directory, full_filename)):
+            # If it's a directory, load metadata from all JSON files within it
+            subdirectory_metadata = load_all_metadata_by_filename(os.path.join(json_directory, full_filename))
+            all_metadata_by_filename.update(subdirectory_metadata)
+
+    return all_metadata_by_filename
