@@ -169,8 +169,8 @@ def extract_dm3_metadata(file_path: str, folder_path: str) -> None:
                 metadata["info"] = __convert_to_json_serializable_recursive(dm3_file.info)
 
             # Save metadata to a JSON file
-            filename_only = os.path.splitext(os.path.basename(file_path))[0] # Remove extension
-            metadata_file_name = os.path.join(folder_path, f"{filename_only}_metadata.json")
+            output_filename = dm3_file.filename.replace(".", "_")
+            metadata_file_name = os.path.join(folder_path, f"{output_filename}_metadata.json")
             save_metadata_as_json(metadata, metadata_file_name)
 
     except FileNotFoundError:

@@ -56,11 +56,10 @@ def extract_metadata():
 
         for root, _, files in os.walk(SAVE_PATH):
             for file_name in files:
-                file_path = os.path.join(root, file_name)
-                filename_only = os.path.splitext(file_path)[0] # Remove extension
-
-                metadata_file_name = os.path.join(METADATA_FOLDER, f"{filename_only}_metadata.json")
-                extract_tif_metadata(file_path, metadata_file_name)
+                output_filename = file_name.replace(".", "_")
+                metadata_file_name = os.path.join(METADATA_FOLDER, f"{output_filename}_metadata.json")
+                
+                extract_tif_metadata(os.path.join(root, file_name), metadata_file_name)
         
         end_time = timer()
         print(f"Metadata extraction completed in {(end_time - start_time):.2f} seconds.")

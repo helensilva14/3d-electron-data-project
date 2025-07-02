@@ -25,8 +25,6 @@
     <td>u2os_chromatin.py</td>
 
 TODO:
-- Change hemibrain_ng.py to use same extraction as in jrc_mus_nacc.py (drop volume.info usage) to have consistent metadata
-- Change metadata JSON filenames to contain the extension info as part of the name (remove dirs from u2os filename)
 - Write consolidation functions for each group: DM3, ZARR, TIFF
 - Based on the extension, point each JSON to its corresponding consolidation function
 - Perform a final consolidation on top of the groups (same or equivalent attributes)

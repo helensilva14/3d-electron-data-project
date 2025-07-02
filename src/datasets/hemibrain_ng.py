@@ -8,7 +8,7 @@ from utils.metadata import extract_zarr_metadata
 DATASET_URL = "gs://neuroglancer-janelia-flyem-hemibrain/v1.0/segmentation/"
 
 SAVE_PATH = "data/raw/hemibrain_1000x1000x1000_crop.zarr/"
-METADATA_FILE = "outputs/hemibrain_ng_metadata.json"
+METADATA_FILE = "outputs/hemibrain_ng_zarr_metadata.json"
 
 def download_dataset():
     """Downloads a 1000x1000x1000 pixel crop of the Hemibrain Neuroglancer dataset."""
