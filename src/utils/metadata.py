@@ -4,54 +4,10 @@ import sys
 import numpy as np
 
 from timeit import default_timer as timer
-from PIL import Image
-from PIL.ExifTags import TAGS
 from tifffile import TiffFile
 from collections import defaultdict
 
 from utils.helpers import save_metadata_as_json
-
-def get_brief_tif_metadata(file_path: str, metadata_path: str) -> None:
-    """Extracts basic metadata from a TIFF file using PIL (Pillow) and saves it to a JSON file.
-
-    Args:
-        file_path (str): The path to the TIFF file.
-        metadata_path (str): The path to save the extracted metadata JSON file.
-    """
-    if not os.path.exists(file_path):
-        raise FileNotFoundError(f"File {file_path} not found. Pull it from DVC store by running 'dvc pull'.")
-    
-    if os.path.exists(metadata_path):
-        print(f"Metadata file {metadata_path} already exists. Skipping extraction.")
-    else:
-        print(f"Metadata file {metadata_path} does not exist. Extracting...")
-        # Ensure the directory exists
-        os.makedirs(os.path.dirname(metadata_path), exist_ok=True)  
-        try:
-            metadata = {}
-            start_time = timer()
-            # Extraction using PIL (Pillow)
-            with Image.open(file_path) as tif_img_stack:
-                # Collect basic image metadata
-                metadata["ImageSize"] = tif_img_stack.size
-                metadata["Format"] = tif_img_stack.format
-                metadata["Mode"] = tif_img_stack.mode
-                metadata["Info"] = tif_img_stack.info
-                metadata["Frames"] = getattr(tif_img_stack, "n_frames", 1),
-                metadata["IsMultiPage"] = getattr(tif_img_stack, "is_multipage", False)
-                metadata["IsAnimated"] = getattr(tif_img_stack, "is_animated", False)
-                # Get EXIF data
-                exifdata = tif_img_stack.getexif()
-                for tag_id in exifdata:
-                    tag = TAGS.get(tag_id, tag_id)
-                    metadata[tag] = exifdata.get(tag_id)
-            end_time = timer()
-            print(f"Metadata extraction completed in {(end_time - start_time):.2f} seconds.")
-            
-            # Save metadata to a JSON file
-            save_metadata_as_json(metadata, metadata_path)
-        except Exception as e:
-            print(f"Error during metadata extraction from {file_path}: {e}")
 
 def extract_all_tif_metadata(file_path, metadata_path: str) -> None:
     """Extracts all available metadata from a TIFF file using tifffile and saves it to a JSON file.
