@@ -253,14 +253,15 @@ def consolidate_attribute_names(all_metadata_by_filename):
             attribute_presence[attr_name].add(filename)
 
     return {
-        "attributes_present_in_multiple_datasets": {
-            attr: list(files)
+        "attributes_present_in_multiple_datasets": [
+            attr
             for attr, files in attribute_presence.items()
             if len(files) > 1
-        },
+        ],
         "attributes_unique_to_single_datasets": {
-            attr: list(files)
-            for attr, files in attribute_presence.items()
-            if len(files) == 1
+            filename: f"{len([
+                attr for attr, files in attribute_presence.items() if files == {filename}
+            ])} unique attributes. Not listed to reduce output size."
+            for filename in all_metadata_by_filename.keys()
         },
     }
