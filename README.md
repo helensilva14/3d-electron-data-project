@@ -1,81 +1,53 @@
-# 3D Electron Microscopy Dataset Acquisition and Preparation
+# 3D Electron Microscopy - Data Acquisition and Preparation
 
-This project aims to acquire publicly available 3D electron microscopy datasets, extract and consolidate their metadata, and design a strategy for making them accessible to AI/ML pipelines in a block-wise manner.
+This project automates the acquisition, metadata extraction, and consolidation of publicly available 3D electron microscopy datasets, with the future goal of enabling efficient, block-wise access for AI/ML pipelines.
 
-## Project Goal
+## Project Goals
 
-The primary goals of this project are:
-
-1.  **Automated Data Download:** Develop robust and efficient code to download diverse 3D electron microscopy datasets from various sources.
-2.  **Metadata Consolidation:** Identify, extract, and consolidate relevant metadata (e.g., resolution, pixel type) from these datasets, providing a unified view.
-3.  **AI/ML Pipeline Data Access Design:** Outline a software design for providing block-wise access to these large 3D image datasets for AI/ML model training and inference.
+1. **Automated Data Download:** Robust scripts to download diverse 3D electron microscopy datasets from multiple sources.
+1. **Metadata Extraction & Consolidation:** Identify, extract, and harmonize relevant metadata (e.g., attrs, chunks) from each dataset, providing a unified and queryable view (see [`METADATA_SUMMARY.md`](docs/METADATA_SUMMARY.md)).
+1. **AI/ML Pipeline Data Access Design:** Outline and prototype a strategy for block-wise access to large 3D image datasets for scalable AI/ML workflows (see [`DATA_ACCESS_DESIGN.md`](docs/DATA_ACCESS_DESIGN.md)).
 
 ## Datasets
 
-The following publicly available 3D electron microscopy datasets are targeted for this project:
+The following publicly available 3D electron microscopy datasets are targeted:
 
-  * **IDR:** [https://idr.openmicroscopy.org/webclient/img_detail/9846137/?dataset=10740](https://idr.openmicroscopy.org/webclient/img_detail/9846137/?dataset=10740)
-  * **EMPIAR:** [https://www.ebi.ac.uk/empiar/EMPIAR-11759/](https://www.ebi.ac.uk/empiar/EMPIAR-11759/)
-  * **EPFL CVLAB:** [https://www.epfl.ch/labs/cvlab/data/data-em/](https://www.epfl.ch/labs/cvlab/data/data-em/)
-  * **Janelia OpenOrganelle:** [https://openorganelle.janelia.org/datasets/jrc_mus-nacc-2](https://openorganelle.janelia.org/datasets/jrc_mus-nacc-2)
-  * **Hemibrain-NG:** [https://tinyurl.com/hemibrain-ng](https://tinyurl.com/hemibrain-ng) (Note: Only a random 1000x1000x1000 pixel crop region will be downloaded for this dataset.)
-
-## Tasks
-
-### 1. Data Download
-
-Scripts are provided for downloading each dataset. The download process leverages chunked streaming for large files and is designed to be reproducible.
-
-**Current Status:**
-- [x] EPFL dataset download implemented ([`epfl_dataset.py`](src/download/epfl_dataset.py))
-- [ ] U2OS Chromatin download script stub ([`u2os_chromatin_dataset.py`](src/download/u2os_chromatin_dataset.py))
-- [ ] EMPIAR, Janelia, and Hemibrain download scripts are stubbed and need implementation
-
-### 2. Metadata Identification and Consolidation
-
-Scripts extract both brief and full metadata from TIFF files using Pillow and tifffile. Metadata is saved as JSON.
-
-**Current Status:**
-- [x] Metadata extraction for TIFF files ([`metadata.py`](src/utils/metadata.py))
-- [x] Metadata extraction for EPFL dataset ([`epfl_dataset.py`](src/download/epfl_dataset.py))
-- [ ] Metadata extraction for other formats (e.g., Zarr) is planned
-
-**Deliverables:**
-- [x] Scripts for metadata extraction ([`src/utils/metadata.py`](src/utils/metadata.py))
-- [ ] Consolidated metadata table (planned)
-- [ ] `METADATA_SUMMARY.md` (in progress)
-
-### 3. AI/ML Pipeline Data Access Design
-
-A conceptual design for block-wise access is outlined in [`DATA_ACCESS_DESIGN.md`](docs/DATA_ACCESS_DESIGN.md).
+1. **EMPIAR-11759:** [https://www.ebi.ac.uk/empiar/EMPIAR-11759/](https://www.ebi.ac.uk/empiar/EMPIAR-11759/)
+1. **EPFL-Hippocampus:** [https://www.epfl.ch/labs/cvlab/data/data-em/](https://www.epfl.ch/labs/cvlab/data/data-em/)
+1. **Hemibrain-NG:** [https://tinyurl.com/hemibrain-ng](https://tinyurl.com/hemibrain-ng) (Note: Only a random 1000x1000x1000 pixel crop region will be downloaded for this dataset.)
+1. **JRC-MUS-NACC:** [https://openorganelle.janelia.org/datasets/jrc_mus-nacc-2](https://openorganelle.janelia.org/datasets/jrc_mus-nacc-2)
+1. **U2OS-Chromatin:** [https://idr.openmicroscopy.org/webclient/img_detail/9846137/?dataset=10740](https://idr.openmicroscopy.org/webclient/img_detail/9846137/?dataset=10740)
 
 ## Tools & Dependencies
 
 - **Python 3.12**
-- **DVC** for data versioning (usage is optional)
-- **Pillow** and **tifffile** for TIFF handling
-- **requests** for HTTP downloads
-- **zarr**, **h5py**, **xarray** for scalable array data (planned)
+- **[DVC](https://dvc.org/)** (optional, for data versioning)
+- **tifffile** for handling TIFF files
+- **cloud-volume** for Neuroglancer/Hemibrain data
+- **zarr** for scalable array storage
+- **pyDM3reader** for DM3 files
+- **requests**, **ftplib** for downloads
+- **pandas** for summary tables
 - See [`requirements.txt`](requirements.txt) for the full list
 
-## Installation & Execution
+## Installation & Usage
 
 ```bash
 git clone https://github.com/helensilva14/3d-electron-data-project.git
 cd 3d-electron-data-project
+
+python3 -m venv env
+source env/bin/activate
 pip install -r requirements.txt
 ```
 
-Run the main script to execute the project tasks:
+Run the main pipeline (downloads data, extracts metadata, consolidates):
+
 ```bash
 python3 src/main.py
 ```
 
------
-
-## Contributing
-
-Contributions are welcome! Please open issues or submit pull requests.
+Outputs will be saved in the `outputs/` and `docs/` directories.
 
 ## License
 
