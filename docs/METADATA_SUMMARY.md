@@ -24,7 +24,6 @@
   <tr>
     <td>u2os_chromatin.py</td>
 
-TODO:
-- Write consolidation functions for each group: DM3, ZARR, TIFF
-- Based on the extension, point each JSON to its corresponding consolidation function
-- Perform a final consolidation on top of the groups (same or equivalent attributes)
+Next steps:
+- Analyze a list of filenames to detect sequential patterns and summarize them
+  - Current scenario - all DM3 files being listed on consolidated_metadata.json when only the common prefix could be used

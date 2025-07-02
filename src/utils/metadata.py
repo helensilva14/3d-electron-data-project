@@ -180,7 +180,7 @@ def extract_dm3_metadata(file_path: str, folder_path: str) -> None:
         print(f"Error reading DM3 file {file_path} with pyDM3reader: {e}", file=sys.stderr)
         return None
 
-def consolidate_attribute_names(all_metadata_by_filename: dict) -> dict:
+def consolidate_categories(all_metadata_by_filename: dict) -> dict:
     """Consolidates top-level metadata categories from multiple metadata files,
     identifying those present in multiple datasets.
 
@@ -193,40 +193,38 @@ def consolidate_attribute_names(all_metadata_by_filename: dict) -> dict:
     category_presence = defaultdict(set) # Maps category_name -> set of filenames
 
     for filename, metadata_content in all_metadata_by_filename.items():
-        # Simplified function to get top-level categories
-        current_dataset_categories = __get_top_level_metadata_categories(metadata_content)
+        current_dataset_categories = __get_top_level_metadata_categories(filename, metadata_content)
         for category_name in current_dataset_categories:
             category_presence[category_name].add(filename)
 
     # Convert sets to lists for JSON serialization
-    attributes_present_in_multiple_datasets = []
+    categories_present_in_multiple_datasets = []
     for category, files in category_presence.items():
         if len(files) > 1:
-            attributes_present_in_multiple_datasets.append({
+            categories_present_in_multiple_datasets.append({
                 "category_name": category,
                 "present_in_files": sorted(list(files)) # Sort for consistent output
             })
 
-    attributes_unique_to_single_datasets = {}
+    categories_unique_to_single_datasets = {}
     for filename in all_metadata_by_filename.keys():
         unique_categories_for_file = [
             category for category, files in category_presence.items() if files == {filename}
         ]
         if len(unique_categories_for_file) > 0:
-            attributes_unique_to_single_datasets[filename] = {
+            categories_unique_to_single_datasets[filename] = {
                 "count": len(unique_categories_for_file),
-                # "examples": sorted(unique_categories_for_file[:5])
-                "categories": sorted(unique_categories_for_file)
+                "examples": sorted(unique_categories_for_file[:5]) # Only 5 examples for shortness
             }
 
     return {
         "summary": {
-            "total_files_processed": len(all_metadata_by_filename),
-            "total_unique_categories_found": len(category_presence),
-            "num_categories_in_multiple_datasets": len(attributes_present_in_multiple_datasets)
+            "files_processed": len(all_metadata_by_filename),
+            "total_categories_found": len(category_presence),
+            "categories_in_multiple_datasets": len(categories_present_in_multiple_datasets),
         },
-        "categories_present_in_multiple_datasets": attributes_present_in_multiple_datasets,
-        "categories_unique_to_single_datasets_by_file": attributes_unique_to_single_datasets,
+        "categories_in_multiple_datasets": categories_present_in_multiple_datasets,
+        "categories_unique_to_single_datasets": categories_unique_to_single_datasets,
     }
 
 def __extract_zgroup_metadata_recursive(zgroup: zarr.hierarchy.Group) -> dict:
@@ -318,16 +316,42 @@ def __convert_to_json_serializable_recursive(value: object) -> object:
         except Exception:
             return f"<Unserializable object of type {type(value)}>"
 
-def __get_top_level_metadata_categories(metadata_dict: dict) -> set:
+def __get_top_level_metadata_categories(filename: str, metadata_dict: dict) -> set:
     """
     Retrieves the top-level keys (categories) from a standardized metadata dictionary.
 
     Args:
+        filename (str): The name of the file from which the metadata was extracted.
         metadata_dict (dict): The loaded metadata dictionary for a single file.
 
     Returns:
         set: A set of strings, representing the top-level categories/attributes.
     """
+    categories = set()
     if isinstance(metadata_dict, dict):
-        return set(metadata_dict.keys())
-    return set()
+        categories.update(metadata_dict.keys())
+
+    if "dm3_metadata" in filename:
+        if "image_summary" in metadata_dict:
+            categories.update(metadata_dict["image_summary"].keys())
+        if "info" in metadata_dict:
+            categories.update(metadata_dict["info"].keys())
+            
+    elif "zarr_metadata" in filename:
+        if "attrs" in metadata_dict:
+            categories.update(metadata_dict["attrs"].keys())
+        if "children" in metadata_dict:
+            first_child = next(iter(metadata_dict["children"].values()), None)
+            if first_child:
+                categories.update(first_child.keys())
+
+    elif "tiff_metadata" in filename:
+        if "global_info" in metadata_dict:
+            categories.update(metadata_dict["global_info"].keys())
+        if "pages" in metadata_dict:
+            first_page = next(iter(metadata_dict["pages"]), None)
+            if first_page:
+                categories.update(first_page.keys())
+                categories.update(first_page["page_tiff_tags"].keys())
+
+    return categories
