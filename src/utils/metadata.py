@@ -181,34 +181,52 @@ def extract_dm3_metadata(file_path: str, folder_path: str) -> None:
         return None
 
 def consolidate_attribute_names(all_metadata_by_filename: dict) -> dict:
-    """Consolidates attribute names from multiple metadata files, identifying those present in multiple datasets.
+    """Consolidates top-level metadata categories from multiple metadata files,
+    identifying those present in multiple datasets.
 
     Args:
         all_metadata_by_filename (dict): A dictionary mapping filenames to their metadata content.
 
     Returns:
-        dict: A dictionary with consolidated attribute names and their dataset mappings.
+        dict: A dictionary with consolidated category names and their dataset mappings.
     """
-    attribute_presence = defaultdict(set) # Maps attribute_name -> set of filenames
+    category_presence = defaultdict(set) # Maps category_name -> set of filenames
 
     for filename, metadata_content in all_metadata_by_filename.items():
-        
-        current_dataset_attributes = _find_all_attribute_names_recursive(metadata_content)
-        for attr_name in current_dataset_attributes:
-            attribute_presence[attr_name].add(filename)
+        # Simplified function to get top-level categories
+        current_dataset_categories = __get_top_level_metadata_categories(metadata_content)
+        for category_name in current_dataset_categories:
+            category_presence[category_name].add(filename)
+
+    # Convert sets to lists for JSON serialization
+    attributes_present_in_multiple_datasets = []
+    for category, files in category_presence.items():
+        if len(files) > 1:
+            attributes_present_in_multiple_datasets.append({
+                "category_name": category,
+                "present_in_files": sorted(list(files)) # Sort for consistent output
+            })
+
+    attributes_unique_to_single_datasets = {}
+    for filename in all_metadata_by_filename.keys():
+        unique_categories_for_file = [
+            category for category, files in category_presence.items() if files == {filename}
+        ]
+        if len(unique_categories_for_file) > 0:
+            attributes_unique_to_single_datasets[filename] = {
+                "count": len(unique_categories_for_file),
+                # "examples": sorted(unique_categories_for_file[:5])
+                "categories": sorted(unique_categories_for_file)
+            }
 
     return {
-        "attributes_present_in_multiple_datasets": [
-            attr
-            for attr, files in attribute_presence.items()
-            if len(files) > 1
-        ],
-        "attributes_unique_to_single_datasets": {
-            filename: f"{len([
-                attr for attr, files in attribute_presence.items() if files == {filename}
-            ])} unique attributes. Not listed to reduce output size."
-            for filename in all_metadata_by_filename.keys()
+        "summary": {
+            "total_files_processed": len(all_metadata_by_filename),
+            "total_unique_categories_found": len(category_presence),
+            "num_categories_in_multiple_datasets": len(attributes_present_in_multiple_datasets)
         },
+        "categories_present_in_multiple_datasets": attributes_present_in_multiple_datasets,
+        "categories_unique_to_single_datasets_by_file": attributes_unique_to_single_datasets,
     }
 
 def __extract_zgroup_metadata_recursive(zgroup: zarr.hierarchy.Group) -> dict:
@@ -300,33 +318,16 @@ def __convert_to_json_serializable_recursive(value: object) -> object:
         except Exception:
             return f"<Unserializable object of type {type(value)}>"
 
-def _find_all_attribute_names_recursive(metadata_dict, current_path="") -> set:
-    """ Recursively finds all unique attribute names in a nested dictionary structure,
-    returning them as a set of strings with their full paths.
-    
-    Args:
-        metadata_dict (dict): The metadata dictionary to search.
-        current_path (str): The current path in the nested structure, used for recursion.
-    
-    Returns:
-        A set of unique attribute names with their full paths.
+def __get_top_level_metadata_categories(metadata_dict: dict) -> set:
     """
-    attribute_names = set()
+    Retrieves the top-level keys (categories) from a standardized metadata dictionary.
 
+    Args:
+        metadata_dict (dict): The loaded metadata dictionary for a single file.
+
+    Returns:
+        set: A set of strings, representing the top-level categories/attributes.
+    """
     if isinstance(metadata_dict, dict):
-        for key, value in metadata_dict.items():
-            full_path_key = f"{current_path}.{key}" if current_path else key
-
-            if isinstance(value, dict):
-                attribute_names.update(
-                    _find_all_attribute_names_recursive(value, full_path_key)
-                )
-            elif isinstance(value, list):
-                for i, item in enumerate(value):
-                    attribute_names.update(
-                        _find_all_attribute_names_recursive(item, f"{full_path_key}[{i}]")
-                    )
-            else:
-                attribute_names.add(full_path_key)
-
-    return attribute_names
+        return set(metadata_dict.keys())
+    return set()

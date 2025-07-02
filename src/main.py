@@ -13,8 +13,8 @@ def main():
     u2os_chromatin.run_tasks()
 
     # Consolidate metadata from all datasets
-    # print("Consolidating metadata from all datasets...")
-    # consolidate_metadata()
+    print("Consolidating metadata from all datasets...")
+    consolidate_metadata()
 
 def consolidate_metadata():
     JSON_METADATA_DIRECTORY = "outputs"
