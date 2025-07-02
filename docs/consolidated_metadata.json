@@ -22,7 +22,14 @@
       ]
     },
     {
-      "category_name": "compressor",
+      "category_name": "itemsize",
+      "present_in_files": [
+        "hemibrain_ng_zarr_metadata",
+        "jrc_mus_nacc_zarr_metadata"
+      ]
+    },
+    {
+      "category_name": "shape",
       "present_in_files": [
         "hemibrain_ng_zarr_metadata",
         "jrc_mus_nacc_zarr_metadata"
@@ -36,35 +43,21 @@
       ]
     },
     {
+      "category_name": "fill_value",
+      "present_in_files": [
+        "hemibrain_ng_zarr_metadata",
+        "jrc_mus_nacc_zarr_metadata"
+      ]
+    },
+    {
+      "category_name": "chunks",
+      "present_in_files": [
+        "hemibrain_ng_zarr_metadata",
+        "jrc_mus_nacc_zarr_metadata"
+      ]
+    },
+    {
       "category_name": "filters",
-      "present_in_files": [
-        "hemibrain_ng_zarr_metadata",
-        "jrc_mus_nacc_zarr_metadata"
-      ]
-    },
-    {
-      "category_name": "itemsize",
-      "present_in_files": [
-        "hemibrain_ng_zarr_metadata",
-        "jrc_mus_nacc_zarr_metadata"
-      ]
-    },
-    {
-      "category_name": "ndim",
-      "present_in_files": [
-        "hemibrain_ng_zarr_metadata",
-        "jrc_mus_nacc_zarr_metadata"
-      ]
-    },
-    {
-      "category_name": "type",
-      "present_in_files": [
-        "hemibrain_ng_zarr_metadata",
-        "jrc_mus_nacc_zarr_metadata"
-      ]
-    },
-    {
-      "category_name": "shape",
       "present_in_files": [
         "hemibrain_ng_zarr_metadata",
         "jrc_mus_nacc_zarr_metadata"
@@ -94,28 +87,7 @@
       ]
     },
     {
-      "category_name": "chunks",
-      "present_in_files": [
-        "hemibrain_ng_zarr_metadata",
-        "jrc_mus_nacc_zarr_metadata"
-      ]
-    },
-    {
-      "category_name": "attrs",
-      "present_in_files": [
-        "hemibrain_ng_zarr_metadata",
-        "jrc_mus_nacc_zarr_metadata"
-      ]
-    },
-    {
-      "category_name": "fill_value",
-      "present_in_files": [
-        "hemibrain_ng_zarr_metadata",
-        "jrc_mus_nacc_zarr_metadata"
-      ]
-    },
-    {
-      "category_name": "path",
+      "category_name": "order",
       "present_in_files": [
         "hemibrain_ng_zarr_metadata",
         "jrc_mus_nacc_zarr_metadata"
@@ -129,14 +101,14 @@
       ]
     },
     {
-      "category_name": "nchunks",
+      "category_name": "attrs",
       "present_in_files": [
         "hemibrain_ng_zarr_metadata",
         "jrc_mus_nacc_zarr_metadata"
       ]
     },
     {
-      "category_name": "order",
+      "category_name": "ndim",
       "present_in_files": [
         "hemibrain_ng_zarr_metadata",
         "jrc_mus_nacc_zarr_metadata"
@@ -150,154 +122,35 @@
       ]
     },
     {
-      "category_name": "filename",
+      "category_name": "type",
       "present_in_files": [
-        "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0002_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0003_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0004_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0005_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0006_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0007_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0008_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0009_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0010_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0011_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0012_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0013_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0014_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0015_dm3_metadata"
+        "hemibrain_ng_zarr_metadata",
+        "jrc_mus_nacc_zarr_metadata"
       ]
     },
     {
-      "category_name": "name_old",
+      "category_name": "nchunks",
       "present_in_files": [
-        "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0002_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0003_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0004_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0005_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0006_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0007_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0008_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0009_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0010_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0011_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0012_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0013_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0014_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0015_dm3_metadata"
+        "hemibrain_ng_zarr_metadata",
+        "jrc_mus_nacc_zarr_metadata"
       ]
     },
     {
-      "category_name": "micro",
+      "category_name": "compressor",
       "present_in_files": [
-        "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0002_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0003_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0004_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0005_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0006_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0007_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0008_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0009_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0010_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0011_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0012_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0013_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0014_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0015_dm3_metadata"
+        "hemibrain_ng_zarr_metadata",
+        "jrc_mus_nacc_zarr_metadata"
       ]
     },
     {
-      "category_name": "hv",
+      "category_name": "path",
       "present_in_files": [
-        "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0002_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0003_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0004_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0005_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0006_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0007_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0008_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0009_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0010_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0011_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0012_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0013_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0014_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0015_dm3_metadata"
+        "hemibrain_ng_zarr_metadata",
+        "jrc_mus_nacc_zarr_metadata"
       ]
     },
     {
-      "category_name": "mag_f",
-      "present_in_files": [
-        "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0002_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0003_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0004_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0005_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0006_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0007_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0008_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0009_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0010_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0011_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0012_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0013_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0014_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0015_dm3_metadata"
-      ]
-    },
-    {
-      "category_name": "pixel_size_value",
-      "present_in_files": [
-        "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0002_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0003_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0004_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0005_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0006_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0007_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0008_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0009_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0010_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0011_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0012_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0013_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0014_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0015_dm3_metadata"
-      ]
-    },
-    {
-      "category_name": "gms_v_",
-      "present_in_files": [
-        "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0002_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0003_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0004_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0005_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0006_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0007_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0008_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0009_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0010_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0011_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0012_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0013_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0014_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0015_dm3_metadata"
-      ]
-    },
-    {
-      "category_name": "cuts",
+      "category_name": "gms_v",
       "present_in_files": [
         "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
         "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
@@ -360,7 +213,7 @@
       ]
     },
     {
-      "category_name": "size",
+      "category_name": "mag",
       "present_in_files": [
         "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
         "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
@@ -381,49 +234,7 @@
       ]
     },
     {
-      "category_name": "hv_f",
-      "present_in_files": [
-        "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0002_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0003_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0004_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0005_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0006_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0007_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0008_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0009_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0010_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0011_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0012_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0013_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0014_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0015_dm3_metadata"
-      ]
-    },
-    {
-      "category_name": "pixel_size_unit",
-      "present_in_files": [
-        "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0002_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0003_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0004_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0005_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0006_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0007_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0008_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0009_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0010_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0011_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0012_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0013_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0014_dm3_metadata",
-        "F57-8_test1_3VBSED_slice_0015_dm3_metadata"
-      ]
-    },
-    {
-      "category_name": "image_summary",
+      "category_name": "filename",
       "present_in_files": [
         "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
         "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
@@ -465,7 +276,7 @@
       ]
     },
     {
-      "category_name": "mag",
+      "category_name": "gms_v_",
       "present_in_files": [
         "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
         "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
@@ -486,7 +297,7 @@
       ]
     },
     {
-      "category_name": "gms_v",
+      "category_name": "hv",
       "present_in_files": [
         "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
         "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
@@ -507,7 +318,7 @@
       ]
     },
     {
-      "category_name": "full_original_tags",
+      "category_name": "image_summary",
       "present_in_files": [
         "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
         "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
@@ -549,7 +360,49 @@
       ]
     },
     {
-      "category_name": "file_version",
+      "category_name": "pixel_size_value",
+      "present_in_files": [
+        "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0002_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0003_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0004_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0005_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0006_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0007_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0008_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0009_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0010_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0011_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0012_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0013_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0014_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0015_dm3_metadata"
+      ]
+    },
+    {
+      "category_name": "hv_f",
+      "present_in_files": [
+        "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0002_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0003_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0004_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0005_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0006_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0007_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0008_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0009_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0010_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0011_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0012_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0013_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0014_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0015_dm3_metadata"
+      ]
+    },
+    {
+      "category_name": "micro",
       "present_in_files": [
         "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
         "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
@@ -591,7 +444,154 @@
       ]
     },
     {
+      "category_name": "name_old",
+      "present_in_files": [
+        "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0002_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0003_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0004_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0005_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0006_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0007_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0008_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0009_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0010_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0011_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0012_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0013_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0014_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0015_dm3_metadata"
+      ]
+    },
+    {
+      "category_name": "size",
+      "present_in_files": [
+        "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0002_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0003_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0004_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0005_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0006_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0007_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0008_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0009_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0010_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0011_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0012_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0013_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0014_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0015_dm3_metadata"
+      ]
+    },
+    {
+      "category_name": "cuts",
+      "present_in_files": [
+        "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0002_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0003_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0004_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0005_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0006_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0007_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0008_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0009_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0010_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0011_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0012_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0013_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0014_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0015_dm3_metadata"
+      ]
+    },
+    {
+      "category_name": "full_original_tags",
+      "present_in_files": [
+        "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0002_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0003_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0004_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0005_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0006_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0007_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0008_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0009_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0010_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0011_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0012_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0013_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0014_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0015_dm3_metadata"
+      ]
+    },
+    {
+      "category_name": "mag_f",
+      "present_in_files": [
+        "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0002_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0003_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0004_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0005_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0006_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0007_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0008_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0009_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0010_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0011_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0012_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0013_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0014_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0015_dm3_metadata"
+      ]
+    },
+    {
       "category_name": "mode",
+      "present_in_files": [
+        "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0002_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0003_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0004_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0005_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0006_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0007_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0008_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0009_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0010_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0011_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0012_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0013_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0014_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0015_dm3_metadata"
+      ]
+    },
+    {
+      "category_name": "pixel_size_unit",
+      "present_in_files": [
+        "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0001_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0002_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0003_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0004_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0005_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0006_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0007_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0008_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0009_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0010_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0011_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0012_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0013_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0014_dm3_metadata",
+        "F57-8_test1_3VBSED_slice_0015_dm3_metadata"
+      ]
+    },
+    {
+      "category_name": "file_version",
       "present_in_files": [
         "F57-8_test1_3VBSED_slice_0000_dm3_metadata",
         "F57-8_test1_3VBSED_slice_0001_dm3_metadata",

@@ -32,7 +32,7 @@ def consolidate_metadata():
 
     df = pd.DataFrame.from_dict(consolidation_results['categories_in_multiple_datasets'])
     with open(CATEGORIES_TABLE_FILE, "w", encoding="utf-8") as html_file:
-        html_file.write(df.to_html(index=False))
+        html_file.write(df.sort_values(by='category_name').to_html(index=False))
 
 if __name__ == "__main__":
     main()
