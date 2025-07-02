@@ -1,14 +1,7 @@
 cloud_volume==12.3.1
 dm3_lib @ git+https://github.com/piraynal/pyDM3reader.git@3a56ac751a693b7130ae9d9360a0fee655092cbf
-fsspec==2025.5.1
-aiobotocore==2.23.0
-s3fs==2025.5.1
-dask==2025.5.1
-distributed==2025.5.1
-fibsem_tools==7.0.5
 numpy==2.3.1
 quilt3==6.3.1
 Requests==2.32.4
 tifffile==2025.6.11
-xarray==2025.6.1
 zarr==2.18.7

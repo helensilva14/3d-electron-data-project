@@ -8,13 +8,13 @@ from datasets import empiar_11759, epfl_hippocampus, hemibrain_ng, jrc_mus_nacc,
 def main():
     # empiar_11759.run_tasks()
     # epfl_hippocampus.run_tasks()
-    # hemibrain_ng.run_tasks()
-    # jrc_mus_nacc.run_tasks()
+    hemibrain_ng.run_tasks()
+    jrc_mus_nacc.run_tasks()
     # u2os_chromatin.run_tasks()
 
     # Consolidate metadata from all datasets
-    print("Consolidating metadata from all datasets...")
-    consolidate_metadata()
+    # print("Consolidating metadata from all datasets...")
+    # consolidate_metadata()
 
 def consolidate_metadata():
     JSON_METADATA_DIRECTORY = "outputs"

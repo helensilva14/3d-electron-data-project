@@ -1,5 +1,7 @@
 {
-    "root_attrs": {
+    "path": "",
+    "type": "zgroup",
+    "attrs": {
         "multiscales": [
             {
                 "axes": [
@@ -227,401 +229,275 @@
             }
         ]
     },
-    "children_metadata": {
+    "children": {
         "s0": {
-            "type": "DataTree",
-            "dims": [
-                "z",
-                "y",
-                "x"
+            "path": "s0",
+            "type": "zarray",
+            "shape": [
+                564,
+                2520,
+                2596
             ],
-            "coords": {
-                "z": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        564
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "z"
-                    ],
-                    "summary_only": true
-                },
-                "y": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        2520
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "y"
-                    ],
-                    "summary_only": true
-                },
-                "x": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        2596
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "x"
-                    ],
-                    "summary_only": true
-                }
-            },
+            "dtype": "int16",
+            "chunks": [
+                64,
+                64,
+                64
+            ],
+            "order": "C",
+            "read_only": true,
+            "compressor": "Zstd(level=1)",
+            "filters": [],
+            "fill_value": 0,
+            "ndim": 3,
+            "itemsize": 2,
+            "nbytes": 7379285760,
+            "nchunks": 14760,
+            "cdata_shape": [
+                9,
+                40,
+                41
+            ],
             "attrs": {}
         },
         "s1": {
-            "type": "DataTree",
-            "dims": [
-                "z",
-                "y",
-                "x"
+            "path": "s1",
+            "type": "zarray",
+            "shape": [
+                282,
+                1260,
+                1298
             ],
-            "coords": {
-                "z": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        282
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "z"
-                    ],
-                    "summary_only": true
-                },
-                "y": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        1260
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "y"
-                    ],
-                    "summary_only": true
-                },
-                "x": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        1298
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "x"
-                    ],
-                    "summary_only": true
-                }
-            },
+            "dtype": "int16",
+            "chunks": [
+                64,
+                64,
+                64
+            ],
+            "order": "C",
+            "read_only": true,
+            "compressor": "Zstd(level=1)",
+            "filters": [],
+            "fill_value": 0,
+            "ndim": 3,
+            "itemsize": 2,
+            "nbytes": 922410720,
+            "nchunks": 2100,
+            "cdata_shape": [
+                5,
+                20,
+                21
+            ],
             "attrs": {}
         },
         "s2": {
-            "type": "DataTree",
-            "dims": [
-                "z",
-                "y",
-                "x"
+            "path": "s2",
+            "type": "zarray",
+            "shape": [
+                141,
+                630,
+                649
             ],
-            "coords": {
-                "z": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        141
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "z"
-                    ],
-                    "summary_only": true
-                },
-                "y": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        630
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "y"
-                    ],
-                    "summary_only": true
-                },
-                "x": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        649
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "x"
-                    ],
-                    "summary_only": true
-                }
-            },
+            "dtype": "int16",
+            "chunks": [
+                64,
+                64,
+                64
+            ],
+            "order": "C",
+            "read_only": true,
+            "compressor": "Zstd(level=1)",
+            "filters": [],
+            "fill_value": 0,
+            "ndim": 3,
+            "itemsize": 2,
+            "nbytes": 115301340,
+            "nchunks": 330,
+            "cdata_shape": [
+                3,
+                10,
+                11
+            ],
             "attrs": {}
         },
         "s3": {
-            "type": "DataTree",
-            "dims": [
-                "z",
-                "y",
-                "x"
+            "path": "s3",
+            "type": "zarray",
+            "shape": [
+                70,
+                315,
+                324
             ],
-            "coords": {
-                "z": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        70
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "z"
-                    ],
-                    "summary_only": true
-                },
-                "y": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        315
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "y"
-                    ],
-                    "summary_only": true
-                },
-                "x": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        324
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "x"
-                    ],
-                    "summary_only": true
-                }
-            },
+            "dtype": "int16",
+            "chunks": [
+                64,
+                64,
+                64
+            ],
+            "order": "C",
+            "read_only": true,
+            "compressor": "Zstd(level=1)",
+            "filters": [],
+            "fill_value": 0,
+            "ndim": 3,
+            "itemsize": 2,
+            "nbytes": 14288400,
+            "nchunks": 60,
+            "cdata_shape": [
+                2,
+                5,
+                6
+            ],
             "attrs": {}
         },
         "s4": {
-            "type": "DataTree",
-            "dims": [
-                "z",
-                "y",
-                "x"
+            "path": "s4",
+            "type": "zarray",
+            "shape": [
+                35,
+                157,
+                162
             ],
-            "coords": {
-                "z": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        35
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "z"
-                    ],
-                    "summary_only": true
-                },
-                "y": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        157
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "y"
-                    ],
-                    "summary_only": true
-                },
-                "x": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        162
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "x"
-                    ],
-                    "summary_only": true
-                }
-            },
+            "dtype": "int16",
+            "chunks": [
+                64,
+                64,
+                64
+            ],
+            "order": "C",
+            "read_only": true,
+            "compressor": "Zstd(level=1)",
+            "filters": [],
+            "fill_value": 0,
+            "ndim": 3,
+            "itemsize": 2,
+            "nbytes": 1780380,
+            "nchunks": 9,
+            "cdata_shape": [
+                1,
+                3,
+                3
+            ],
             "attrs": {}
         },
         "s5": {
-            "type": "DataTree",
-            "dims": [
-                "z",
-                "y",
-                "x"
+            "path": "s5",
+            "type": "zarray",
+            "shape": [
+                17,
+                78,
+                81
             ],
-            "coords": {
-                "z": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        17
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "z"
-                    ],
-                    "summary_only": true
-                },
-                "y": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        78
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "y"
-                    ],
-                    "summary_only": true
-                },
-                "x": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        81
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "x"
-                    ],
-                    "summary_only": true
-                }
-            },
+            "dtype": "int16",
+            "chunks": [
+                64,
+                64,
+                64
+            ],
+            "order": "C",
+            "read_only": true,
+            "compressor": "Zstd(level=1)",
+            "filters": [],
+            "fill_value": 0,
+            "ndim": 3,
+            "itemsize": 2,
+            "nbytes": 214812,
+            "nchunks": 4,
+            "cdata_shape": [
+                1,
+                2,
+                2
+            ],
             "attrs": {}
         },
         "s6": {
-            "type": "DataTree",
-            "dims": [
-                "z",
-                "y",
-                "x"
+            "path": "s6",
+            "type": "zarray",
+            "shape": [
+                8,
+                39,
+                40
             ],
-            "coords": {
-                "z": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        8
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "z"
-                    ],
-                    "summary_only": true
-                },
-                "y": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        39
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "y"
-                    ],
-                    "summary_only": true
-                },
-                "x": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        40
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "x"
-                    ],
-                    "summary_only": true
-                }
-            },
+            "dtype": "int16",
+            "chunks": [
+                64,
+                64,
+                64
+            ],
+            "order": "C",
+            "read_only": true,
+            "compressor": "Zstd(level=1)",
+            "filters": [],
+            "fill_value": 0,
+            "ndim": 3,
+            "itemsize": 2,
+            "nbytes": 24960,
+            "nchunks": 1,
+            "cdata_shape": [
+                1,
+                1,
+                1
+            ],
             "attrs": {}
         },
         "s7": {
-            "type": "DataTree",
-            "dims": [
-                "z",
-                "y",
-                "x"
+            "path": "s7",
+            "type": "zarray",
+            "shape": [
+                4,
+                19,
+                20
             ],
-            "coords": {
-                "z": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        4
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "z"
-                    ],
-                    "summary_only": true
-                },
-                "y": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        19
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "y"
-                    ],
-                    "summary_only": true
-                },
-                "x": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        20
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "x"
-                    ],
-                    "summary_only": true
-                }
-            },
+            "dtype": "int16",
+            "chunks": [
+                64,
+                64,
+                64
+            ],
+            "order": "C",
+            "read_only": true,
+            "compressor": "Zstd(level=1)",
+            "filters": [],
+            "fill_value": 0,
+            "ndim": 3,
+            "itemsize": 2,
+            "nbytes": 3040,
+            "nchunks": 1,
+            "cdata_shape": [
+                1,
+                1,
+                1
+            ],
             "attrs": {}
         },
         "s8": {
-            "type": "DataTree",
-            "dims": [
-                "z",
-                "y",
-                "x"
+            "path": "s8",
+            "type": "zarray",
+            "shape": [
+                2,
+                9,
+                10
             ],
-            "coords": {
-                "z": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        2
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "z"
-                    ],
-                    "summary_only": true
-                },
-                "y": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        9
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "y"
-                    ],
-                    "summary_only": true
-                },
-                "x": {
-                    "type": "DataArray (summarized)",
-                    "shape": [
-                        10
-                    ],
-                    "dtype": "float64",
-                    "dims": [
-                        "x"
-                    ],
-                    "summary_only": true
-                }
-            },
+            "dtype": "int16",
+            "chunks": [
+                64,
+                64,
+                64
+            ],
+            "order": "C",
+            "read_only": true,
+            "compressor": "Zstd(level=1)",
+            "filters": [],
+            "fill_value": 0,
+            "ndim": 3,
+            "itemsize": 2,
+            "nbytes": 360,
+            "nchunks": 1,
+            "cdata_shape": [
+                1,
+                1,
+                1
+            ],
             "attrs": {}
         }
     }

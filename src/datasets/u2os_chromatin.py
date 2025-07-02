@@ -4,7 +4,7 @@ import os
 import fnmatch
 
 from timeit import default_timer as timer
-from utils.metadata import extract_all_tif_metadata
+from utils.metadata import extract_tif_metadata
 
 FTP_HOST = "ftp.ebi.ac.uk"
 FTP_PATH = "/pub/databases/IDR/idr0086-miron-micrographs/20200610-ftp/experimentD/Miron_FIB-SEM/Miron_FIB-SEM_processed"
@@ -40,7 +40,7 @@ def download_dataset():
         except ftplib.all_errors as e:
             print(f"FTP Error: {e}", file=sys.stderr)
         except Exception as e:
-            print(f"An unexpected error occurred: {e}", file=sys.stderr)
+            print(f"Unexpected error occurred: {e}", file=sys.stderr)
 
         end_time = timer()
         print(f"Download completed in {(end_time - start_time):.2f} seconds.")
@@ -60,7 +60,7 @@ def extract_metadata():
                 filename_only = os.path.splitext(file_path)[0] # Remove extension
 
                 metadata_file_name = os.path.join(METADATA_FOLDER, f"{filename_only}_metadata.json")
-                extract_all_tif_metadata(file_path, metadata_file_name)
+                extract_tif_metadata(file_path, metadata_file_name)
         
         end_time = timer()
         print(f"Metadata extraction completed in {(end_time - start_time):.2f} seconds.")
