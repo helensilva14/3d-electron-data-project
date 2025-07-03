@@ -1,6 +1,12 @@
-# Metadata Consolidation
+# Metadata Summary & Consolidation
 
-My strategy consisted in identifying and organizing all top-level metadata categories from the JSON metadata files. 
+1. **[EMPIAR-11759](/outputs/empiar_11759_metadata):** 16 metadata files with 400+ original tags each, besides the 21 top-level and fixed attributes.
+1. **[EPFL-Hippocampus:](/outputs/epfl_hippocampus_tif_metadata.json)** single file with information about all the 1065 pages.
+1. **[Hemibrain-NG:](/outputs/hemibrain_ng_zarr_metadata.json)** single file with only 1 zarray and its attributes.
+1. **[JRC-MUS-NACC:](/outputs/jrc_mus_nacc_zarr_metadata.json)** single file with attributes about 1 zgroup and attributes for each one of its 8 zarrays.
+1. **[U2OS-Chromatin:](/outputs/u2os_chromatin_metadata)** 2 metadata files (one for XY, other XZ) with each file having information about all the 184 pages.
+
+My strategy for the overall consolidation between all datasets consisted in identifying and organizing all top-level metadata categories from the JSON metadata files. 
 - A key function [`__get_top_level_metadata_categories`](/src/utils/metadata.py#L319) extracted these categories, looking in standard locations and also deeper within format-specific sections of each dataset file type (DM3, ZARR, TIFF)
 - Then, the main consolidation function [`consolidate_categories`](/src/utils/metadata.py#L183) tracked which categories appeared in multiple metadata files and which were unique to single files. This resulted in a clear summary of all categories and their distribution across the datasets. This final consolidation result is available in the [consolidated_metadata.json](consolidated_metadata.json) file.
 
