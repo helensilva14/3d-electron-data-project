@@ -196,7 +196,7 @@ def consolidate_categories(all_metadata_by_filename: dict) -> dict:
         current_dataset_categories = __get_top_level_metadata_categories(filename, metadata_content)
         for category_name in current_dataset_categories:
             category_presence[category_name].add(filename)
-
+            
     # Convert sets to lists for JSON serialization
     categories_present_in_multiple_datasets = []
     for category, files in category_presence.items():
@@ -205,6 +205,9 @@ def consolidate_categories(all_metadata_by_filename: dict) -> dict:
                 "category_name": category,
                 "present_in_files": sorted(list(files)) # Sort for consistent output
             })
+
+    # TEMPORARY: Testing a way to get sample values for each category across all files
+    # __get_sample_values_by_filename(all_metadata_by_filename, categories_present_in_multiple_datasets)
 
     categories_unique_to_single_datasets = {}
     for filename in all_metadata_by_filename.keys():
@@ -355,3 +358,51 @@ def __get_top_level_metadata_categories(filename: str, metadata_dict: dict) -> s
                 categories.update(first_page["page_tiff_tags"].keys())
 
     return categories
+
+def __get_sample_values_by_filename(all_metadata_by_filename: dict, categories_summary: list[dict]):
+    """ Collects sample values for each category across all metadata files.
+
+    Args:
+        all_metadata_by_filename (dict): A dictionary mapping filenames to their metadata content.
+        categories_summary (list[dict]): A list of dictionaries summarizing categories and their presence in files.
+    
+    Returns:
+        dict: A dictionary mapping filenames to sets of sample values for each category.
+    """
+    sample_values = dict.fromkeys(all_metadata_by_filename.keys(), set())
+
+    for dict_item in categories_summary:
+        category_name = dict_item["category_name"]
+
+        for file in dict_item["present_in_files"]:
+            sample_value = __get_sample_value_from_category(all_metadata_by_filename[file], category_name)
+            if sample_value and sample_value != "dict skipped":
+                print(f"Sample value for category '{category_name}' in file '{file}': {sample_value}")
+
+    return sample_values
+
+def __get_sample_value_from_category(metadata_dict: dict, category: str) -> str:
+    """ Retrieves a sample value for a given category from the metadata dictionary.
+
+    Args:
+        metadata_dict (dict): The metadata dictionary from which to extract the value.
+        category (str): The category for which to retrieve a sample value.
+        
+    Returns:
+        str: A sample value for the specified category, or None if not found.
+    """
+    # Check if the category exists at the top-level in the metadata dictionary
+    if category in metadata_dict:
+        value = metadata_dict[category]
+        if isinstance(value, (list, tuple)):
+            # Skip list's first element if is a dict (e.g., list of dictionaries)
+            if len(value) > 0 and isinstance(value[0], dict):
+                return "dict skipped"
+            # Return the first element of the list if it's not a dict
+            elif len(value) > 0:
+               return value[0]
+        elif isinstance(value, dict):
+            return "dict skipped"
+        else:
+            return value
+    return None
