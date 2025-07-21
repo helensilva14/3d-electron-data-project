@@ -17,23 +17,66 @@ Below there is a table with the `categories_in_multiple_datasets` section of the
   - Current problem: all DM3 files being listed on consolidated_metadata.json when only the common prefix could be used
 - Generate other tables to compare the values of the common categories between the datasets.
 
-## Table - Metadata Summary 
+## Table - Metadata Values Summary
+
+<table border="1"><thead>
+  <tr>
+    <th>Dataset</th>
+    <th>Size</th>
+    <th>Resolution</th>
+    <th>DataType</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td>EMPIAR-11759</td>
+    <td>5496x5500</td>
+    <td>0.0080µm x 0.0080µm</td>
+    <td>UNSIGNED_INT8_DATA</td>
+  </tr>
+  <tr>
+    <td>EPFL-Hippocampus</td>
+    <td>2048x1536</td>
+    <td>1 PPI (pixel per inch)</td>
+    <td>uint8</td>
+  </tr>
+  <tr>
+    <td>Hemibrain-NG</td>
+    <td>1000x1000x1000</td>
+    <td><i>Not Found / Not Available</i></td>
+    <td>uint64</td>
+  </tr>
+  <tr>
+    <td>JRC-MUS-NACC</td>
+    <td>s0 = 564x2520x2596, <br>s1 = 282x1260x1298, <br>s2 = 141x630x649, <br>s3 = 70x315x324, <br>s4 = 35x157x162,<br>s5 = 17x78x81,<br>s6 = 8x39x40,<br>s7 = 4x19x20,<br>s8 = 2x9x10</td>
+    <td><i>Not Found / Not Available</i></td>
+    <td>int16</td>
+  </tr>
+  <tr>
+    <td>U2OS-Chromatin</td>
+    <td>xy = 1121x775, <br>xz = 1121x184</td>
+    <td>50µm x 50µm</td>
+    <td>uint8</td>
+  </tr>
+</tbody>
+</table>
+
+## Table - Metadata Fields Summary 
 
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th>category_name</th>
-      <th>present_in_files</th>
+      <th>Category name</th>
+      <th>Present in the following files</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>acq_date</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>acq_time</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>attrs</td>
@@ -53,19 +96,19 @@ Below there is a table with the `categories_in_multiple_datasets` section of the
     </tr>
     <tr>
       <td>cuts</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>dtype</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata, hemibrain_ng_zarr_metadata, jrc_mus_nacc_zarr_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata, hemibrain_ng_zarr_metadata, jrc_mus_nacc_zarr_metadata]</td>
     </tr>
     <tr>
       <td>file_version</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>filename</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>fill_value</td>
@@ -77,7 +120,7 @@ Below there is a table with the `categories_in_multiple_datasets` section of the
     </tr>
     <tr>
       <td>full_original_tags</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>global_info</td>
@@ -85,27 +128,27 @@ Below there is a table with the `categories_in_multiple_datasets` section of the
     </tr>
     <tr>
       <td>gms_v</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>gms_v_</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>hv</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>hv_f</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>image_summary</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>info</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>itemsize</td>
@@ -113,23 +156,23 @@ Below there is a table with the `categories_in_multiple_datasets` section of the
     </tr>
     <tr>
       <td>mag</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>mag_f</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>micro</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>mode</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>name_old</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>nbytes</td>
@@ -145,7 +188,7 @@ Below there is a table with the `categories_in_multiple_datasets` section of the
     </tr>
     <tr>
       <td>operator</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>order</td>
@@ -161,11 +204,11 @@ Below there is a table with the `categories_in_multiple_datasets` section of the
     </tr>
     <tr>
       <td>pixel_size_unit</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>pixel_size_value</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>read_only</td>
@@ -177,11 +220,11 @@ Below there is a table with the `categories_in_multiple_datasets` section of the
     </tr>
     <tr>
       <td>size</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>specimen</td>
-      <td>[F57-8_test1_3VBSED_slice_0000_dm3_metadata, F57-8_test1_3VBSED_slice_0001_dm3_metadata, F57-8_test1_3VBSED_slice_0002_dm3_metadata, F57-8_test1_3VBSED_slice_0003_dm3_metadata, F57-8_test1_3VBSED_slice_0004_dm3_metadata, F57-8_test1_3VBSED_slice_0005_dm3_metadata, F57-8_test1_3VBSED_slice_0006_dm3_metadata, F57-8_test1_3VBSED_slice_0007_dm3_metadata, F57-8_test1_3VBSED_slice_0008_dm3_metadata, F57-8_test1_3VBSED_slice_0009_dm3_metadata, F57-8_test1_3VBSED_slice_0010_dm3_metadata, F57-8_test1_3VBSED_slice_0011_dm3_metadata, F57-8_test1_3VBSED_slice_0012_dm3_metadata, F57-8_test1_3VBSED_slice_0013_dm3_metadata, F57-8_test1_3VBSED_slice_0014_dm3_metadata, F57-8_test1_3VBSED_slice_0015_dm3_metadata]</td>
+      <td>[F57-8_test1_3VBSED_slice_00**_dm3_metadata]</td>
     </tr>
     <tr>
       <td>type</td>
