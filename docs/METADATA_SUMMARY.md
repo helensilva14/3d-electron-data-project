@@ -10,12 +10,7 @@ My strategy for the overall consolidation between all datasets consisted in iden
 - A key function [`__get_top_level_metadata_categories`](/src/utils/metadata.py#L319) extracted these categories, looking in standard locations and also deeper within format-specific sections of each dataset file type (DM3, ZARR, TIFF)
 - Then, the main consolidation function [`consolidate_categories`](/src/utils/metadata.py#L183) tracked which categories appeared in multiple metadata files and which were unique to single files. This resulted in a clear summary of all categories and their distribution across the datasets. This final consolidation result is available in the [consolidated_metadata.json](consolidated_metadata.json) file.
 
-Below there is a table with the `categories_in_multiple_datasets` section of the result file, sorted alphabetically by category name.
-
-## Ideal next steps:
-- Analyze list of filenames to detect sequential patterns and summarize them.
-  - Current problem: all DM3 files being listed on consolidated_metadata.json when only the common prefix could be used
-- Generate other tables to compare the values of the common categories between the datasets.
+Below there is a table with a manual and high-level summary of the metadata values present in the datasets. Last but not least there is a table with the `categories_in_multiple_datasets` section of the result file, sorted alphabetically by category name.
 
 ## Table - Metadata Values Summary
 
