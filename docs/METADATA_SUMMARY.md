@@ -20,37 +20,49 @@ Below there is a table with a manual and high-level summary of the metadata valu
     <th>Size</th>
     <th>Resolution</th>
     <th>DataType</th>
+    <th>Chunks</th>
+    <th>Compressor</th>
   </tr></thead>
 <tbody>
   <tr>
     <td>EMPIAR-11759</td>
-    <td>5496x5500</td>
-    <td>0.0080µm x 0.0080µm</td>
+    <td>5496x5500x1</td>
+    <td>0.0080x0.0080x0.0080 µm</td>
     <td>UNSIGNED_INT8_DATA</td>
+    <td><i>N/A</i></td>
+    <td><i>N/A</i></td>
   </tr>
   <tr>
     <td>EPFL-Hippocampus</td>
-    <td>2048x1536</td>
-    <td>1 PPI (pixel per inch)</td>
+    <td>1065x2048x1536</td>
+    <td>5x5x5 nm</td>
     <td>uint8</td>
+    <td><i>N/A</i></td>
+    <td><i>N/A</i></td>
   </tr>
   <tr>
     <td>Hemibrain-NG</td>
     <td>1000x1000x1000</td>
-    <td><i>Not Found / Not Available</i></td>
+    <td>8x8x8 nm</td>
     <td>uint64</td>
+    <td>[63, 63, 125, 1]</td>
+    <td>Blosc(cname='lz4', clevel=5, shuffle=SHUFFLE, blocksize=0)</td>
   </tr>
   <tr>
     <td>JRC-MUS-NACC</td>
-    <td>s0 = 564x2520x2596, <br>s1 = 282x1260x1298, <br>s2 = 141x630x649, <br>s3 = 70x315x324, <br>s4 = 35x157x162,<br>s5 = 17x78x81,<br>s6 = 8x39x40,<br>s7 = 4x19x20,<br>s8 = 2x9x10</td>
-    <td><i>Not Found / Not Available</i></td>
+    <td>10384x10080x1669.44 nm</td>
+    <td>4x4x2.96 nm</td>
     <td>int16</td>
+    <td>[64, 64, 64]</td>
+    <td>Zstd(level=1)</td>
   </tr>
   <tr>
     <td>U2OS-Chromatin</td>
-    <td>xy = 1121x775, <br>xz = 1121x184</td>
-    <td>50µm x 50µm</td>
+    <td>xy = 1121x775x1, <br>xz = 1121x184x1</td>
+    <td>0.02x0.02x0.02 µm</td>
     <td>uint8</td>
+    <td><i>N/A</i></td>
+    <td><i>N/A</i></td>
   </tr>
 </tbody>
 </table>
