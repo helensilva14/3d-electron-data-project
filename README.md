@@ -23,7 +23,7 @@ The following publicly available 3D electron microscopy datasets are targeted:
 - **Python 3.12**
 - **[DVC](https://dvc.org/)** (optional, for data versioning)
 - **tifffile** for handling TIFF files
-- **cloud-volume** for Neuroglancer/Hemibrain data
+- **cloud-volume** for Neuroglancer data
 - **zarr** for scalable array storage
 - **pyDM3reader** for DM3 files
 - **requests**, **ftplib** for downloads

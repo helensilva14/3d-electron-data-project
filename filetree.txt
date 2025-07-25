@@ -1,0 +1,37 @@
+.
+├── data
+│   └── raw
+│       ├── empiar_11759_dataset.dvc
+│       ├── epfl_volumedata.tif.dvc
+│       ├── hemibrain_1000x1000x1000_crop.zarr.dvc
+│       ├── jrc_mus_nacc_2.zarr.dvc
+│       └── u2os_chromatin.dvc
+├── docs
+│   ├── categories_in_multiple_datasets_table.html
+│   ├── consolidated_metadata.json
+│   ├── DATA_ACCESS_DESIGN.md
+│   └── METADATA_SUMMARY.md
+├── outputs
+│   ├── empiar_11759_metadata
+│   │   ├── F57-8_test1_3VBSED_slice_00**_dm3_metadata.json
+│   ├── epfl_hippocampus_tif_metadata.json
+│   ├── hemibrain_ng_zarr_metadata.json
+│   ├── jrc_mus_nacc_zarr_metadata.json
+│   └── u2os_chromatin_metadata
+│       ├── Figure_S3B_FIB-SEM_U2OS_20x20x20nm_xy_tif_metadata.json
+│       └── Figure_S3B_FIB-SEM_U2OS_20x20x20nm_xz_tif_metadata.json
+├── README.md
+├── requirements.txt
+└── src
+    ├── datasets
+    │   ├── empiar_11759.py
+    │   ├── epfl_hippocampus.py
+    │   ├── hemibrain_ng.py
+    │   ├── __init__.py
+    │   ├── jrc_mus_nacc.py
+    │   └── u2os_chromatin.py
+    ├── main.py
+    └── utils
+        ├── helpers.py
+        ├── __init__.py
+        └── metadata.py
